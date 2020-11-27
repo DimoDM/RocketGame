@@ -1,4 +1,4 @@
-package com.example.rocketgame.activities;
+package com.example.rocketgame.ui.activities;
 
 
 import android.os.Bundle;

@@ -1,7 +1,7 @@
 package com.example.rocketgame.di.modules;
 
-import com.example.rocketgame.activities.BaseActivity;
-import com.example.rocketgame.activities.MainActivity;
+import com.example.rocketgame.ui.activities.BaseActivity;
+import com.example.rocketgame.ui.activities.MainActivity;
 
 import dagger.Module;
 import dagger.android.ContributesAndroidInjector;

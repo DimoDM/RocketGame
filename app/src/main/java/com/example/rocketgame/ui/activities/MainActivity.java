@@ -1,8 +1,4 @@
-package com.example.rocketgame.activities;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+package com.example.rocketgame.ui.activities;
 
 import com.example.rocketgame.R;
 
