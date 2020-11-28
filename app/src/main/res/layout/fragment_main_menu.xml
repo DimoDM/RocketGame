@@ -5,7 +5,7 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:animateLayoutChanges="true"
-    tools:context=".MainMenuFragment">
+    tools:context=".ui.fragments.MainMenuFragment">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"
@@ -21,7 +21,7 @@
         android:layout_height="100dp"
         app:layout_constraintStart_toEndOf="@+id/guideline"
         app:layout_constraintEnd_toStartOf="@id/guideline"
-        android:background="@drawable/PlayBtn"
+        android:background="@drawable/play_btn"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="30dp"
         />
