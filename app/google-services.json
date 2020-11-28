@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "1063999440066",
+    "firebase_url": "https://rocket-game-a659a.firebaseio.com",
+    "project_id": "rocket-game-a659a",
+    "storage_bucket": "rocket-game-a659a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1063999440066:android:d01ee0870c9c8203cb675b",
+        "android_client_info": {
+          "package_name": "com.example.rocketgame"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1063999440066-ajf15n4g1fkdr8skgagjea7oejavojht.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDFmYoXYEqihE0V4L17BB-gOqwKAzRwDCg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1063999440066-ajf15n4g1fkdr8skgagjea7oejavojht.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
