@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/app_nav"
+    app:startDestination="@id/mainMenuFragment">
+
+    <fragment
+        android:id="@+id/mainMenuFragment"
+        android:name="com.example.rocketgame.MainMenuFragment"
+        android:label="fragment_main_menu"
+        tools:layout="@layout/fragment_main_menu" >
+        <action
+            android:id="@+id/action_mainMenuFragment_to_shopFragment"
+            app:destination="@id/shopFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_singlePlayerFragment"
+            app:destination="@id/singlePlayerFragment" />
+        <action
+            android:id="@+id/action_mainMenuFragment_to_multiplayerFragment"
+            app:destination="@id/multiplayerFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/singlePlayerFragment"
+        android:name="com.example.rocketgame.SinglePlayerFragment"
+        android:label="fragment_single_player"
+        tools:layout="@layout/fragment_single_player" >
+        <action
+            android:id="@+id/action_singlePlayerFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/multiplayerFragment"
+        android:name="com.example.rocketgame.MultiplayerFragment"
+        android:label="fragment_multiplayer"
+        tools:layout="@layout/fragment_multiplayer" >
+        <action
+            android:id="@+id/action_multiplayerFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+        <action
+            android:id="@+id/action_multiplayerFragment_to_multiplayerJoinFragment"
+            app:destination="@id/multiplayerJoinFragment" />
+        <action
+            android:id="@+id/action_multiplayerFragment_to_multiplayerGameHostFragment"
+            app:destination="@id/multiplayerGameHostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/shopFragment"
+        android:name="com.example.rocketgame.ShopFragment"
+        android:label="fragment_shop"
+        tools:layout="@layout/fragment_shop" >
+        <action
+            android:id="@+id/action_shopFragment_to_mainMenuFragment"
+            app:destination="@id/mainMenuFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/multiplayerGameHostFragment"
+        android:name="com.example.rocketgame.MultiplayerGameHostFragment"
+        android:label="fragment_multiplayer_game_host"
+        tools:layout="@layout/fragment_multiplayer_game_host" />
+    <fragment
+        android:id="@+id/multiplayerJoinFragment"
+        android:name="com.example.rocketgame.MultiplayerJoinFragment"
+        android:label="fragment_multiplayer_join"
+        tools:layout="@layout/fragment_multiplayer_join" />
+</navigation>
