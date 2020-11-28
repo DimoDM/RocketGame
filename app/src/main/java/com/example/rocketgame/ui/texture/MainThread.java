@@ -17,8 +17,6 @@ public class MainThread extends Thread {
 
 
     public MainThread(SurfaceHolder surfaceHolder, GameView gameView) {
-
-
         super();
         this.surfaceHolder = surfaceHolder;
         this.gameView = gameView;
