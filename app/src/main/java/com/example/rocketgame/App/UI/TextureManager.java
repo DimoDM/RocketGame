@@ -3,6 +3,7 @@ package com.example.rocketgame.App.UI;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Matrix;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,15 +12,40 @@ import com.example.rocketgame.RocketGameApplication;
 
 public class TextureManager  {
 
-    Bitmap image;
-    int x = 100,y = 100;
+    private Bitmap image;
+    private int x;
+    private int y;
+    private int width;
+    private int height;
 
     public TextureManager(int path, int x, int y, int w, int h) {
+        this.x = x;
+        this.y = y;
+        this.width = w;
+        this.height = h;
         image = BitmapFactory.decodeResource(RocketGameApplication.APP.getResources(), path);
+        image = getResizedBitmap(image, w, h);
     }
 
     public void draw(Canvas canvas) {
         canvas.drawBitmap(image, x, y, null);
+    }
+
+    private Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {
+        int width = bm.getWidth();
+        int height = bm.getHeight();
+        float scaleWidth = ((float) newWidth) / width;
+        float scaleHeight = ((float) newHeight) / height;
+        // CREATE A MATRIX FOR THE MANIPULATION
+        Matrix matrix = new Matrix();
+        // RESIZE THE BIT MAP
+        matrix.postScale(scaleWidth, scaleHeight);
+
+        // "RECREATE" THE NEW BITMAP
+        Bitmap resizedBitmap = Bitmap.createBitmap(
+                bm, 0, 0, width, height, matrix, false);
+        bm.recycle();
+        return resizedBitmap;
     }
 
 
