@@ -14,10 +14,12 @@ public class RocketGameApplication  extends Application implements HasAndroidInj
     @Inject
     DispatchingAndroidInjector<Object> activityDispatchingAndroidInjector;
 
+    public static RocketGameApplication APP;
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        APP = this;
         DaggerApplicationComponent.builder()
                 .applicationBind(this)
                 .build()

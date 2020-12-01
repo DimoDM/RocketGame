@@ -3,6 +3,7 @@ package com.example.rocketgame.ui.texture;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -10,6 +11,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 
+import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 
 //import androidx.annotation.MainThread;
@@ -17,7 +19,7 @@ import com.example.rocketgame.R;
 
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
-    private TestSprite testSprite;
+    private GameEngine gameEngine;
 
     public GameView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
@@ -45,13 +47,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
-        testSprite = new TestSprite(BitmapFactory.decodeResource(getResources(), R.drawable.sprite1));
+        gameEngine = new GameEngine();
 
 
         thread.setRunning(true);
         thread.start();
 
     }
+
 
     @Override
     public void surfaceDestroyed(SurfaceHolder holder) {
@@ -69,7 +72,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update() {
-        testSprite.update();
+        gameEngine.update();
 
     }
 
@@ -79,8 +82,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         super.draw(canvas);
         if(canvas!=null) {
-            testSprite.draw(canvas);
-
+            gameEngine.draw(canvas);
         }
     }
 
