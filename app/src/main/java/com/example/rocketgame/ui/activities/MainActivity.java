@@ -9,8 +9,16 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.R;
+
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
+
+import com.example.rocketgame.di.DaggerApplicationComponent;
+
 import com.example.rocketgame.ui.texture.GameView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
+
+import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener {
 
@@ -20,6 +28,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(getLayoutRes());
+        FirebaseAuth.getInstance().signOut();
     }
 
     @Override
