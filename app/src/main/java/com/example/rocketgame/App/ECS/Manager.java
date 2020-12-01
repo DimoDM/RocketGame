@@ -1,5 +1,9 @@
 package com.example.rocketgame.App.ECS;
 
+import android.os.Build;
+
+import androidx.annotation.RequiresApi;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +21,7 @@ public class Manager {
         for (int i = 0; i < entities.size(); i++) entities.get(i).draw();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void addToGroup(Entity entity, int group) {
         groupedEntities.computeIfAbsent(group, k -> new ArrayList<>());
         groupedEntities.get(group).add(entity);

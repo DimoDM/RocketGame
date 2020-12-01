@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.rocketgame.R;
 import com.example.rocketgame.RocketGameApplication;
+import com.example.rocketgame.ui.texture.MainThread;
 
 public class TextureManager  {
 
@@ -27,8 +28,8 @@ public class TextureManager  {
         image = getResizedBitmap(image, w, h);
     }
 
-    public void draw(Canvas canvas) {
-        canvas.drawBitmap(image, x, y, null);
+    public void draw() {
+        MainThread.canvas.drawBitmap(image, x, y, null);
     }
 
     private Bitmap getResizedBitmap(Bitmap bm, int newWidth, int newHeight) {

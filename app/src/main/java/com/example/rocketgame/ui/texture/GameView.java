@@ -21,6 +21,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameEngine gameEngine;
 
+
     public GameView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
@@ -44,15 +45,8 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void Move() {
-        this.setOnTouchListener(new View.OnTouchListener() {
-
-
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                gameEngine.texture.setX((int) event.getRawX());
-                invalidate();
-                return true;
-            }
+        this.setOnTouchListener((v, event) -> {
+            return gameEngine.handleInput(v, event);
         });
     }
 
@@ -60,7 +54,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         gameEngine = new GameEngine();
-
+        gameEngine.init();
 
         thread.setRunning(true);
         thread.start();
@@ -93,9 +87,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
         super.draw(canvas);
         if (canvas != null) {
-            gameEngine.draw(canvas);
+            gameEngine.draw();
         }
     }
+
 
 
 }
