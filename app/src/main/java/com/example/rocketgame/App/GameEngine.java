@@ -1,6 +1,7 @@
 package com.example.rocketgame.App;
 
 import android.annotation.SuppressLint;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -16,7 +17,9 @@ import com.example.rocketgame.ui.texture.GameView;
 
 public class GameEngine{
 
-    TextureManager texture;
+    public TextureManager texture;
+    private static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
+    private static final int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
 
     public GameEngine(){
         texture = new TextureManager(R.drawable.sprite1, 123, 123, 123, 123);

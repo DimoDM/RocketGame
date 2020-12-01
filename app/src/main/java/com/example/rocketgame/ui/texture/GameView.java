@@ -1,7 +1,6 @@
 package com.example.rocketgame.ui.texture;
 
 
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -10,6 +9,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
+import android.view.View;
 
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
@@ -38,10 +38,22 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event)
-    {
+    public boolean onTouchEvent(MotionEvent event) {
 
         return super.onTouchEvent(event);
+    }
+
+    public void Move() {
+        this.setOnTouchListener(new View.OnTouchListener() {
+
+
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                gameEngine.texture.setX((int) event.getRawX());
+                invalidate();
+                return true;
+            }
+        });
     }
 
 
@@ -64,7 +76,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 thread.setRunning(false);
                 thread.join();
 
-            } catch(InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             retry = false;
@@ -77,11 +89,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     @Override
-    public void draw(Canvas canvas)
-    {
+    public void draw(Canvas canvas) {
 
         super.draw(canvas);
-        if(canvas!=null) {
+        if (canvas != null) {
             gameEngine.draw(canvas);
         }
     }
