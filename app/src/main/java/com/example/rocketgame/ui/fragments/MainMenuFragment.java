@@ -25,10 +25,18 @@ implements MainMenuFragmentContract.ViewListener {
     @Override
     protected void onFragmentCreated(View view, Bundle savedInstanceState) {
         presentListener.setViewListener(this);
+        binding.playBtn.setOnClickListener(v -> presentListener.onPlayBtnClicked());
+    }
 
+    @Override
+    public void goToGameScreen(){
+        activityListener.startGame();
     }
 
     public interface OnFragmentInteractionListener {
 
+        void startGame();
+        void goToShop();
+        void showClassation();
     }
 }

@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.R;
 
+import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
 import com.example.rocketgame.di.DaggerApplicationComponent;
@@ -49,5 +50,20 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
             fragmentTransaction.addToBackStack(fragmentTag);
         }
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void startGame() {
+        pushFragment(new GameFragment(), GameFragment.TAG, false);
+    }
+
+    @Override
+    public void goToShop() {
+
+    }
+
+    @Override
+    public void showClassation() {
+
     }
 }
