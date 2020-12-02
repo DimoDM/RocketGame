@@ -5,7 +5,7 @@
     <color name="colorAccent">#03DAC5</color>
     <color name="black">#000</color>
     <color name="infoBox">#6528D8</color>
-    <color name="menu_text">#FFFFFF</color>
+    <color name="font_color">#FFFFFF</color>
     <color name="ready">#0EBC38</color>
     <color name="unready">#D31212</color>
 </resources>
