@@ -30,7 +30,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageButton" />
 
     <ImageButton
-        android:id="@+id/imageButton2"
+        android:id="@+id/btnHome"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginStart="128dp"
@@ -41,11 +41,12 @@
         app:layout_constraintTop_toBottomOf="@+id/QRContainer" />
 
     <ImageButton
+        android:id="@+id/btnReadyUnready"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginEnd="116dp"
         android:background="@drawable/btn_ready"
         android:src="@drawable/ic_ready"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageButton2" />
+        app:layout_constraintTop_toTopOf="@+id/btnHome" />
 </androidx.constraintlayout.widget.ConstraintLayout>
