@@ -4,4 +4,15 @@
     <string name="fb_login_protocol_scheme">91c08ca682ef52fba1645aaef7210694</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="single_player">Single Player</string>
+    <string name="high_score">High Score:</string>
+    <string name="last_score">Last Score:</string>
+    <string name="retry">Retry</string>
+    <string name="home">Home</string>
+    <string name="restart">Restart</string>
+    <string name="txt_continue">Continue</string>
+    <string name="txt_menu">Menu</string>
+    <string name="last_play">Last play:</string>
+    <string name="random_score">200</string>
+    <string name="txt_enter_code_menually">Enter Code Menually</string>
 </resources>

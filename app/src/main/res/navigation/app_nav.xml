@@ -24,7 +24,7 @@
         android:id="@+id/singlePlayerFragment"
         android:name="com.example.rocketgame.SinglePlayerFragment"
         android:label="fragment_single_player"
-        tools:layout="@layout/fragment_single_player" >
+        tools:layout="@layout/fragment_single_player_dead" >
         <action
             android:id="@+id/action_singlePlayerFragment_to_mainMenuFragment"
             app:destination="@id/mainMenuFragment" />
