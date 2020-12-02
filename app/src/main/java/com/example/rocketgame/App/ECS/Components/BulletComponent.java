@@ -11,12 +11,14 @@ public class BulletComponent extends Component {
     TransformComponent transform;
     SpriteComponent sprite;
     int bulletSpeed;
+    int attackSpeed;
 
     public BulletComponent() {}
 
-    public BulletComponent(TransformComponent transformComponent, int bulletSpeed) {
+    public BulletComponent(TransformComponent transformComponent, int bulletSpeed, int attackSpeed) {
         transform = transformComponent;
         this.bulletSpeed = bulletSpeed;
+        this.attackSpeed = attackSpeed;
         transform.setVelY(-bulletSpeed);
     }
 
@@ -29,10 +31,23 @@ public class BulletComponent extends Component {
         if(transform.getPosition().y < 0) {
             transform.setX(GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new TransformComponent()).getPosition().x);
             transform.setY(GameEngine.SCREEN_HEIGHT);
+            stop();
         }
     }
 
     @Override
     public void draw() {
+    }
+
+    public void stop() {
+        transform.setVelY(0);
+    }
+
+    public boolean isStopped() {
+        return transform.getVelY() == 0;
+    }
+
+    public void start() {
+        transform.setVelY(-bulletSpeed);
     }
 }

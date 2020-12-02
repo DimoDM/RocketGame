@@ -50,7 +50,7 @@ public class GameEngine{
         player.addComponent(new TransformComponent(((SCREEN_WIDTH - 80)/2), (SCREEN_HEIGHT - 110), 80, 110));
         player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.rocket, 110));
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
-        player.addComponent(new AttackComponent(player.getComponent(new TransformComponent())));
+        player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 80));
     }
 
     public void update() {
