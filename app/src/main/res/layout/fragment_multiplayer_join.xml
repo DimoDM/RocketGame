@@ -1,70 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-    <TextView
-        android:id="@+id/txtEnterCode"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="232dp"
-        android:text="@string/txt_enter_code_menually"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/edtManualCode"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEnterCode" />
+        <TextView
+            android:id="@+id/txtEnterCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="232dp"
+            android:text="@string/txt_enter_code_menually"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageButton
-        android:id="@+id/btnHome"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignTop="@id/edtManualCode"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/btn_shape"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_home"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtManualCode" />
+        <EditText
+            android:id="@+id/edtManualCode"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="52dp"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txtEnterCode" />
 
-    <ImageButton
-        android:id="@+id/btnEnterCode"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignTop="@id/edtManualCode"
-        android:layout_marginStart="100dp"
-        android:background="@drawable/btn_shape"
-        android:scaleType="centerInside"
-        android:src="@drawable/qrwhite"
-        app:layout_constraintStart_toEndOf="@+id/btnHome"
-        app:layout_constraintTop_toTopOf="@+id/btnHome" />
+        <ImageButton
+            android:id="@+id/btnHome"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@id/edtManualCode"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/btn_shape"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_home"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edtManualCode" />
 
-    <ImageButton
-        android:id="@+id/btnQRScan"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
-        android:layout_alignTop="@id/edtManualCode"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/btn_shape"
-        android:scaleType="centerInside"
-        android:src="@drawable/ic_play"
-        app:layout_constraintStart_toEndOf="@+id/btnHome"
-        app:layout_constraintTop_toTopOf="@+id/btnHome" />
+        <ImageButton
+            android:id="@+id/btnEnterCode"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@id/edtManualCode"
+            android:layout_marginStart="100dp"
+            android:background="@drawable/btn_shape"
+            android:scaleType="centerInside"
+            android:src="@drawable/qrwhite"
+            app:layout_constraintStart_toEndOf="@+id/btnHome"
+            app:layout_constraintTop_toTopOf="@+id/btnHome" />
+
+        <ImageButton
+            android:id="@+id/btnQRScan"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_alignTop="@id/edtManualCode"
+            android:layout_marginStart="20dp"
+            android:background="@drawable/btn_shape"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_play"
+            app:layout_constraintStart_toEndOf="@+id/btnHome"
+            app:layout_constraintTop_toTopOf="@+id/btnHome" />
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
