@@ -9,4 +9,5 @@
     <string name="last_score">Last Score:</string>
     <string name="retry">Retry</string>
     <string name="home">Home</string>
+    <string name="restart">Restart</string>
 </resources>
