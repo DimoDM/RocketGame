@@ -19,7 +19,7 @@ public class SpriteComponent extends Component {
     public SpriteComponent(TransformComponent transformComponent, final int path, int size) {
         transform = transformComponent;
         this.path = path;
-        texture = new TextureManager(path, transform.getPosition().x, transform.getPosition().y, transform.getPosition().width, transform.getPosition().height);
+        texture = new TextureManager(path, (int)transform.getPosition().x, (int)transform.getPosition().y, transform.getPosition().width, transform.getPosition().height);
     }
 
     @Override
@@ -27,8 +27,8 @@ public class SpriteComponent extends Component {
 
     @Override
     public void update() {
-        texture.setX(transform.getPosition().x);
-        texture.setY(transform.getPosition().y);
+        texture.setX((int)transform.getPosition().x);
+        texture.setY((int)transform.getPosition().y);
     }
 
     @Override

@@ -2,13 +2,13 @@ package com.example.rocketgame.App.HelpClasses;
 
 public class Rect {
 
-    public int x;
-    public int y;
+    public float x;
+    public float y;
     public int width;
     public int height;
 
     public Rect() {}
-    public Rect(int x, int y, int width, int height) {
+    public Rect(float x, float y, int width, int height) {
         this.x = x;
         this.y = y;
         this.width = width;

@@ -9,7 +9,6 @@ import com.example.rocketgame.ui.texture.GameView;
 public class BulletComponent extends Component {
 
     TransformComponent transform;
-    SpriteComponent sprite;
     int bulletSpeed;
     int attackSpeed;
 

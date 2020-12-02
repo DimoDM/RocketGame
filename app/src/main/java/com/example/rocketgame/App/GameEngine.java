@@ -12,6 +12,7 @@ import android.view.View;
 
 import androidx.annotation.RequiresApi;
 
+import com.example.rocketgame.App.ECS.Components.AsteroidComponent;
 import com.example.rocketgame.App.ECS.Components.AttackComponent;
 import com.example.rocketgame.App.ECS.Components.HandleInput;
 import com.example.rocketgame.App.ECS.Components.SpriteComponent;
@@ -29,6 +30,7 @@ public class GameEngine{
 
     public static Manager manager;
     public Entity player;
+    public Entity asteroid;
 
     public static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
     public static final int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -51,6 +53,12 @@ public class GameEngine{
         player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.rocket, 110));
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
         player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 80));
+
+        asteroid = manager.addEntity();
+        asteroid.addComponent(new TransformComponent());
+        asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent())));
+        asteroid.addComponent(new SpriteComponent(asteroid.getComponent(new TransformComponent()), R.drawable.asteroid, 110));
+
     }
 
     public void update() {

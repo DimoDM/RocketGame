@@ -14,7 +14,7 @@ public class TransformComponent extends Component {
     public TransformComponent() {
     }
 
-    public TransformComponent(int x, int y, int width, int height) {
+    public TransformComponent(float x, float y, int width, int height) {
         position = new Rect(x, y, width, height);
     }
 
@@ -41,11 +41,11 @@ public class TransformComponent extends Component {
         this.position = position;
     }
 
-    public void setX(int x) {
+    public void setX(float x) {
         position.x = x;
     }
 
-    public void setY(int y) {
+    public void setY(float y) {
         position.y = y;
     }
 
