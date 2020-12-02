@@ -33,7 +33,7 @@ public class HandleInput extends Component implements SurfaceView.OnTouchListene
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
-        transform.setX((int)event.getRawX());
+        transform.setX((int)event.getRawX() - (transform.getPosition().width / 2));
         return true;
     }
 }

@@ -6,9 +6,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.annotation.RequiresApi;
+
+import com.example.rocketgame.App.ECS.Components.AttackComponent;
 import com.example.rocketgame.App.ECS.Components.HandleInput;
 import com.example.rocketgame.App.ECS.Components.SpriteComponent;
 import com.example.rocketgame.App.ECS.Components.TransformComponent;
@@ -23,23 +27,30 @@ import com.example.rocketgame.ui.texture.GameView;
 
 public class GameEngine{
 
-    public Manager manager;
+    public static Manager manager;
     public Entity player;
 
-    public TextureManager texture;
-    private static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
-    private static final int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
+    public static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
+    public static final int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
 
-    public GameEngine(){
-        texture = new TextureManager(R.drawable.sprite1, 123, 123, 123, 123);
+    public enum groupLabels {
+        groupPlayer,
+        groupBullets
     }
 
+    public GameEngine(){
+
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void init() {
         manager = new Manager();
         player = manager.addEntity();
-        player.addComponent(new TransformComponent(((SCREEN_WIDTH - 150)/2), (SCREEN_HEIGHT - 150), 150, 150));
-        player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.sprite1, 150));
+        player.addGroup(groupLabels.groupPlayer.ordinal());
+        player.addComponent(new TransformComponent(((SCREEN_WIDTH - 80)/2), (SCREEN_HEIGHT - 110), 80, 110));
+        player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.rocket, 110));
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
+        player.addComponent(new AttackComponent(player.getComponent(new TransformComponent())));
     }
 
     public void update() {
@@ -52,6 +63,5 @@ public class GameEngine{
 
     public void draw() {
         manager.draw();
-        texture.draw();
     }
 }

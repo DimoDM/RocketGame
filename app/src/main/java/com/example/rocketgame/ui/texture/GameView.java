@@ -5,11 +5,14 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
 import android.view.View;
+
+import androidx.annotation.RequiresApi;
 
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
@@ -51,6 +54,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         gameEngine = new GameEngine();
