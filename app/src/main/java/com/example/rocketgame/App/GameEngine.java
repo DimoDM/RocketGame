@@ -15,6 +15,7 @@ import androidx.annotation.RequiresApi;
 import com.example.rocketgame.App.ECS.Components.AsteroidComponent;
 import com.example.rocketgame.App.ECS.Components.AttackComponent;
 import com.example.rocketgame.App.ECS.Components.HandleInput;
+import com.example.rocketgame.App.ECS.Components.HealthComponent;
 import com.example.rocketgame.App.ECS.Components.SpriteComponent;
 import com.example.rocketgame.App.ECS.Components.TransformComponent;
 import com.example.rocketgame.App.ECS.Entity;
@@ -57,7 +58,8 @@ public class GameEngine{
         for (int i = 0; i < 3; i++) {
             Entity asteroid = manager.addEntity();
             asteroid.addComponent(new TransformComponent());
-            asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent())));
+            asteroid.addComponent(new HealthComponent());
+            asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent()), asteroid.getComponent(new HealthComponent())));
             asteroid.addComponent(new SpriteComponent(asteroid.getComponent(new TransformComponent()), R.drawable.asteroid, 110));
             asteroid.addGroup(groupLabels.groupAsteroids.ordinal());
         }
