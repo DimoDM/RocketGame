@@ -62,8 +62,8 @@ public class GameEngine{
             Entity asteroid = manager.addEntity();
             asteroid.addComponent(new TransformComponent());
             asteroid.addComponent(new HealthComponent());
-            asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent()), asteroid.getComponent(new HealthComponent())));
-            asteroid.addComponent(new SpriteComponent(asteroid.getComponent(new TransformComponent()), R.drawable.asteroid, 110));
+            asteroid.addComponent(new SpriteComponent());
+            asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent()), asteroid.getComponent(new HealthComponent()), asteroid.getComponent(new SpriteComponent())));
             asteroid.addGroup(groupLabels.groupAsteroids.ordinal());
         }
 

@@ -5,6 +5,7 @@ import com.example.rocketgame.App.ECS.Entity;
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.App.HelpClasses.Collide;
 import com.example.rocketgame.App.HelpClasses.Rect;
+import com.example.rocketgame.R;
 
 import java.util.Random;
 
@@ -12,15 +13,17 @@ public class AsteroidComponent extends Component {
 
     private TransformComponent transform;
     private HealthComponent health;
+    private SpriteComponent sprite;
     int width;
     int height;
 
     public AsteroidComponent() {
     }
 
-    public AsteroidComponent(TransformComponent transformComponent, HealthComponent healthComponent) {
+    public AsteroidComponent(TransformComponent transformComponent, HealthComponent healthComponent, SpriteComponent spriteComponent) {
         transform = transformComponent;
         health = healthComponent;
+        sprite = spriteComponent;
     }
 
     @Override
@@ -54,6 +57,9 @@ public class AsteroidComponent extends Component {
         transform.setVelY(1);
         transform.setVelX((int)(Math.random() * 2) == 1 ? 0.5f : -0.5f);
         health.setHealth(width / 50);
+        sprite.setPath(R.drawable.asteroid);
+        sprite.setTransform(transform);
+        sprite.reloadTexture();
     }
 
     @Override
