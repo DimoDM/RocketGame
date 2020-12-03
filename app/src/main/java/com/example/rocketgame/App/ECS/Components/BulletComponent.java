@@ -28,9 +28,7 @@ public class BulletComponent extends Component {
     @Override
     public void update() {
         if(transform.getPosition().y < 0) {
-            transform.setX(GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new TransformComponent()).getPosition().x);
-            transform.setY(GameEngine.SCREEN_HEIGHT);
-            stop();
+            destroy();
         }
     }
 
@@ -42,11 +40,17 @@ public class BulletComponent extends Component {
         transform.setVelY(0);
     }
 
+    public void destroy() {
+        transform.setY(GameEngine.SCREEN_HEIGHT);
+        stop();
+    }
+
     public boolean isStopped() {
         return transform.getVelY() == 0;
     }
 
     public void start() {
+        transform.setX(GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new TransformComponent()).getPosition().x);
         transform.setVelY(-bulletSpeed);
     }
 }

@@ -44,12 +44,13 @@ public class AsteroidComponent extends Component {
 
         if(transform.getPosition().x + width > GameEngine.SCREEN_WIDTH) transform.setVelX(-0.5f);
         if(transform.getPosition().x < 0) transform.setVelX(0.5f);
+        if(!health.isAlive()) destroy();
     }
 
     public void destroy() {
         width = ((int) (Math.random() * 3 + 1)) * 50;
         height = width;
-        transform.setPosition(new Rect((int) (Math.random() * GameEngine.SCREEN_WIDTH), -height, width, height));
+        transform.setPosition(new Rect((int) (Math.random() * GameEngine.SCREEN_WIDTH), -height * 2, width, height));
         transform.setVelY(1);
         transform.setVelX((int)(Math.random() * 2) == 1 ? 0.5f : -0.5f);
         health.setHealth(width / 50);

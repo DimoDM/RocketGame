@@ -20,6 +20,7 @@ import com.example.rocketgame.App.ECS.Components.SpriteComponent;
 import com.example.rocketgame.App.ECS.Components.TransformComponent;
 import com.example.rocketgame.App.ECS.Entity;
 import com.example.rocketgame.App.ECS.Manager;
+import com.example.rocketgame.App.HelpClasses.ColliderManager;
 import com.example.rocketgame.App.UI.TextureManager;
 import com.example.rocketgame.R;
 import com.example.rocketgame.RocketGameApplication;
@@ -55,7 +56,7 @@ public class GameEngine{
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
         player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 80));
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 0; i < 10; i++) {
             Entity asteroid = manager.addEntity();
             asteroid.addComponent(new TransformComponent());
             asteroid.addComponent(new HealthComponent());
@@ -68,6 +69,7 @@ public class GameEngine{
 
     public void update() {
         manager.update();
+        ColliderManager.checkAttack();
     }
 
     public boolean handleInput(View v, MotionEvent e) {
