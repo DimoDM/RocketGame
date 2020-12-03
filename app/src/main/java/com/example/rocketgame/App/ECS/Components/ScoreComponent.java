@@ -14,7 +14,7 @@ import java.util.Calendar;
 public class ScoreComponent extends Component {
 
     private int score = 0;
-    private long time = System.currentTimeMillis();
+    private long time = System.nanoTime() / 1000000;
     TextureManager[] texture = new TextureManager[4];
     //TextureManager texture;
 
@@ -32,7 +32,7 @@ public class ScoreComponent extends Component {
 
     @Override
     public void update() {
-        if (System.currentTimeMillis() - time >= 1000) {
+        if (System.nanoTime() / 1000000 - time >= 1000) {
             score++;
             int graph = score;
             int index = 0;
@@ -60,7 +60,7 @@ public class ScoreComponent extends Component {
                 texture[i].setPath(getPath(10));
             }
 
-            time = System.currentTimeMillis();
+            time = System.nanoTime() / 1000000;
         }
     }
 

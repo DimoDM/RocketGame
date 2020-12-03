@@ -56,7 +56,7 @@ public class GameEngine{
         player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.rocket, 110));
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
         player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 80));
-        //player.addComponent(new ScoreComponent());
+        player.addComponent(new ScoreComponent());
 
         for (int i = 0; i < 10; i++) {
             Entity asteroid = manager.addEntity();
@@ -71,7 +71,7 @@ public class GameEngine{
 
     public void update() {
         manager.update();
-        //ColliderManager.checkAttack();
+        ColliderManager.checkAttack(manager.getGroup(groupLabels.groupBullets.ordinal()), manager.getGroup(groupLabels.groupAsteroids.ordinal()));
     }
 
     public boolean handleInput(View v, MotionEvent e) {
