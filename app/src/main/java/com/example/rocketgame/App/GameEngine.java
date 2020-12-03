@@ -30,14 +30,14 @@ public class GameEngine{
 
     public static Manager manager;
     public Entity player;
-    public Entity asteroid;
 
     public static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
     public static final int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
 
     public enum groupLabels {
         groupPlayer,
-        groupBullets
+        groupBullets,
+        groupAsteroids
     }
 
     public GameEngine(){
@@ -54,10 +54,13 @@ public class GameEngine{
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
         player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 80));
 
-        asteroid = manager.addEntity();
-        asteroid.addComponent(new TransformComponent());
-        asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent())));
-        asteroid.addComponent(new SpriteComponent(asteroid.getComponent(new TransformComponent()), R.drawable.asteroid, 110));
+        for (int i = 0; i < 3; i++) {
+            Entity asteroid = manager.addEntity();
+            asteroid.addComponent(new TransformComponent());
+            asteroid.addComponent(new AsteroidComponent(asteroid.getComponent(new TransformComponent())));
+            asteroid.addComponent(new SpriteComponent(asteroid.getComponent(new TransformComponent()), R.drawable.asteroid, 110));
+            asteroid.addGroup(groupLabels.groupAsteroids.ordinal());
+        }
 
     }
 
