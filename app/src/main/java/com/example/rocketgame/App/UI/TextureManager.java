@@ -18,6 +18,9 @@ public class TextureManager  {
     private int y;
     private int width;
     private int height;
+    private int path;
+
+    public TextureManager() {}
 
     public TextureManager(int path, int x, int y, int w, int h) {
         this.x = x;
@@ -47,6 +50,32 @@ public class TextureManager  {
                 bm, 0, 0, width, height, matrix, false);
         bm.recycle();
         return resizedBitmap;
+    }
+
+    public int getWidth() {
+        return width;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
+    }
+
+    public int getPath() {
+        return path;
+    }
+
+    public void setPath(int path) {
+        image = BitmapFactory.decodeResource(RocketGameApplication.APP.getResources(), path);
+        image = getResizedBitmap(image, width, height);
+        this.path = path;
     }
 
     public int getX() {
