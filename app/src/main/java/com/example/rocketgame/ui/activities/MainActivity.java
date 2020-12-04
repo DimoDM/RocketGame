@@ -13,8 +13,6 @@ import com.example.rocketgame.R;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
-import com.example.rocketgame.di.DaggerApplicationComponent;
-
 import com.example.rocketgame.ui.texture.GameView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -31,8 +29,6 @@ GameView.OnDieListener{
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(getLayoutRes());
-        pauseGame();
-        FirebaseAuth.getInstance().signOut();
     }
 
     @Override

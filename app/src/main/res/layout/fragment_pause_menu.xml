@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        tools:context=".PauseMenuFragment">
+
+        <Button
+            android:id="@+id/btnRestart"
+            android:layout_height="50sp"
+            android:layout_width="220sp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/restart"
+            android:fontFamily="@font/pixelmix"
+            android:textSize="30sp"
+            android:textAllCaps="false"
+            android:textColor="@color/font_color"
+            android:layout_marginBottom="20dp"/>
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_height="50sp"
+            android:layout_width="220sp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/txt_continue"
+            android:textAllCaps="false"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/pixelmix"
+            android:textSize="30sp"
+            android:layout_marginBottom="20dp"/>
+        <Button
+            android:id="@+id/btnMainMenu"
+            android:layout_height="50sp"
+            android:layout_width="220sp"
+            android:background="@drawable/btn_shape"
+            android:text="@string/txt_menu"
+            android:textAllCaps="false"
+            android:textColor="@color/font_color"
+            android:fontFamily="@font/pixelmix"
+            android:textSize="30sp"
+            android:layout_marginBottom="20dp"/>
+
+    </LinearLayout>
+</layout>
