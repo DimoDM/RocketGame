@@ -1,17 +1,17 @@
 package com.example.rocketgame.models;
 
 public class Room {
-    private int id;
+    private String id;
     private MultiPlayerUser player1;
     private MultiPlayerUser player2;
     private String winnerUid;
 
-    public Room(int id, MultiPlayerUser player1) {
+    public Room(String id, MultiPlayerUser player1) {
         this.id = id;
         this.player1 = player1;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

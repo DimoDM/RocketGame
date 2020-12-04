@@ -1,5 +1,8 @@
 package com.example.rocketgame.repository;
 
+import com.example.rocketgame.RoomIdGenerator;
+import com.example.rocketgame.models.MultiPlayerUser;
+import com.example.rocketgame.models.Room;
 import com.example.rocketgame.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,8 +29,14 @@ public class FirebaseRepository {
         mUserRef.child(mAuthUser.getUid()).child("wins").setValue(wins);
     }
 
-    public void createRoom(){
+    public void createRoom(MultiPlayerUser player1){
+        String roomId = RoomIdGenerator.generateCode();
+        Room room = new Room(roomId, player1);
+        mRoomRef.child(roomId).setValue(room);
+    }
 
+    public void player2ConnectToRoom(String roomId,MultiPlayerUser player2){
+        mRoomRef.child(roomId).child("player2").setValue(player2);
     }
 
 }
