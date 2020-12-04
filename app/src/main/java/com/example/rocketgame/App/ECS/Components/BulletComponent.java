@@ -2,6 +2,7 @@ package com.example.rocketgame.App.ECS.Components;
 
 import com.example.rocketgame.App.ECS.Component;
 import com.example.rocketgame.App.GameEngine;
+import com.example.rocketgame.App.HelpClasses.Rect;
 import com.example.rocketgame.App.UI.TextureManager;
 import com.example.rocketgame.R;
 import com.example.rocketgame.ui.texture.GameView;
@@ -50,7 +51,8 @@ public class BulletComponent extends Component {
     }
 
     public void start() {
-        transform.setX(GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new TransformComponent()).getPosition().x);
+        Rect r = GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new TransformComponent()).getPosition();
+        transform.setX(r.x + r.width/2 - transform.getPosition().width/2);
         transform.setVelY(-bulletSpeed);
     }
 }

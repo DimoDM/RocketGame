@@ -22,6 +22,7 @@ import com.example.rocketgame.App.ECS.Components.TransformComponent;
 import com.example.rocketgame.App.ECS.Entity;
 import com.example.rocketgame.App.ECS.Manager;
 import com.example.rocketgame.App.HelpClasses.ColliderManager;
+import com.example.rocketgame.App.HelpClasses.ObservableInteger;
 import com.example.rocketgame.App.UI.TextureManager;
 import com.example.rocketgame.R;
 import com.example.rocketgame.RocketGameApplication;
@@ -33,6 +34,7 @@ public class GameEngine{
 
     public static Manager manager;
     public Entity player;
+    public ColliderManager colliderManager;
     public static gameStages GAMESTAGE;
 
     public static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
@@ -59,14 +61,16 @@ public class GameEngine{
     public void init() {
         manager = new Manager();
         player = manager.addEntity();
+        colliderManager = new ColliderManager();
+        GAMESTAGE = gameStages.stageMenu;
         player.addGroup(groupLabels.groupPlayer.ordinal());
         player.addComponent(new TransformComponent(((SCREEN_WIDTH - 80)/2), (SCREEN_HEIGHT - 110), 80, 110));
         player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.rocket, 110));
         player.addComponent(new HandleInput(player.getComponent(new TransformComponent())));
-        player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 80));
+        player.addComponent(new AttackComponent(player.getComponent(new TransformComponent()), 20, 70));
         player.addComponent(new ScoreComponent());
 
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i < 15; i++) {
             Entity asteroid = manager.addEntity();
             asteroid.addComponent(new TransformComponent());
             asteroid.addComponent(new HealthComponent());
@@ -80,7 +84,7 @@ public class GameEngine{
     public void update() {
         if(GAMESTAGE == gameStages.stagePlay) {
             manager.update();
-            ColliderManager.checkAttack(manager.getGroup(groupLabels.groupBullets.ordinal()), manager.getGroup(groupLabels.groupAsteroids.ordinal()));
+            colliderManager.checkCollide(manager.getGroup(groupLabels.groupBullets.ordinal()), manager.getGroup(groupLabels.groupAsteroids.ordinal()));
         }
     }
 

@@ -21,7 +21,8 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener {
+public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
+GameFragment.OnGameFragmentInteractionListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +30,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(getLayoutRes());
+        pauseGame();
         FirebaseAuth.getInstance().signOut();
     }
 
@@ -41,6 +43,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
     protected void onViewCreated() {
         pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
     }
+
 
     private void pushFragment(Fragment fragment, String fragmentTag, boolean addToStack) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager()
@@ -65,5 +68,10 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
     @Override
     public void showClassation() {
 
+    }
+
+    @Override
+    public void pauseGame() {
+        pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
     }
 }

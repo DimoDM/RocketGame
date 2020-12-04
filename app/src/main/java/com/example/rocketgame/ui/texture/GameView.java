@@ -2,6 +2,7 @@ package com.example.rocketgame.ui.texture;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,9 +14,13 @@ import android.view.SurfaceHolder;
 import android.view.View;
 
 import androidx.annotation.RequiresApi;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
+import com.example.rocketgame.RocketGameApplication;
+import com.example.rocketgame.ui.activities.LogInWithFacebookActivity;
+import com.example.rocketgame.ui.activities.MainActivity;
 
 //import androidx.annotation.MainThread;
 
@@ -48,6 +53,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void Move() {
+        if(GameEngine.GAMESTAGE == GameEngine.gameStages.stagePlay)
         this.setOnTouchListener((v, event) -> {
             return gameEngine.handleInput(v, event);
         });
@@ -81,9 +87,14 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     public void update() {
         gameEngine.update();
-
+        if(GameEngine.GAMESTAGE == GameEngine.gameStages.stageDie) {
+            gameEngine.init();
+            Intent i = new Intent(RocketGameApplication.APP.getApplicationContext(), LogInWithFacebookActivity.class);
+            RocketGameApplication.APP.getApplicationContext().startActivity(i);
+        }
     }
 
     @Override
