@@ -72,6 +72,10 @@ public class ScoreComponent extends Component {
         }
     }
 
+    public void addToScore(int points) {
+        score += points;
+    }
+
     public int getScore() {
         return score;
     }

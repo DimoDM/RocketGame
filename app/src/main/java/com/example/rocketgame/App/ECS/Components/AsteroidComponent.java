@@ -2,6 +2,7 @@ package com.example.rocketgame.App.ECS.Components;
 
 import com.example.rocketgame.App.ECS.Component;
 import com.example.rocketgame.App.ECS.Entity;
+import com.example.rocketgame.App.ECS.Manager;
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.App.HelpClasses.Collide;
 import com.example.rocketgame.App.HelpClasses.Rect;
@@ -14,6 +15,7 @@ public class AsteroidComponent extends Component {
     private TransformComponent transform;
     private HealthComponent health;
     private SpriteComponent sprite;
+    private float speed;
     int width;
     int height;
 
@@ -24,6 +26,7 @@ public class AsteroidComponent extends Component {
         transform = transformComponent;
         health = healthComponent;
         sprite = spriteComponent;
+        speed = 1;
     }
 
     @Override
@@ -54,12 +57,14 @@ public class AsteroidComponent extends Component {
         width = ((int) (Math.random() * 3 + 1)) * 50;
         height = width;
         transform.setPosition(new Rect((int) (Math.random() * GameEngine.SCREEN_WIDTH), -height * 2, width, height));
-        transform.setVelY(1);
+        transform.setVelY(speed);
         transform.setVelX((int)(Math.random() * 2) == 1 ? 0.5f : -0.5f);
+        GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new ScoreComponent()).addToScore(health.getMaxHealth());
         health.setHealth(width / 50);
         sprite.setPath(R.drawable.asteroid);
         sprite.setTransform(transform);
         sprite.reloadTexture();
+        speed = 1 + (float)GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new ScoreComponent()).getScore() / 1000;
     }
 
     @Override

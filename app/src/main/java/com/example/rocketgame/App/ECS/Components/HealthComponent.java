@@ -5,11 +5,13 @@ import com.example.rocketgame.App.ECS.Component;
 public class HealthComponent extends Component {
 
     private int health;
+    private int maxHealth;
 
     public HealthComponent() {}
 
     public HealthComponent(int health) {
         this.health = health;
+        maxHealth = health;
     }
 
     public int getHealth() {
@@ -18,6 +20,11 @@ public class HealthComponent extends Component {
 
     public void setHealth(int health) {
         this.health = health;
+        maxHealth = health;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
     }
 
     public void takeDamage(int damage) {
