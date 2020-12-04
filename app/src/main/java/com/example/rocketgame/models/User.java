@@ -1,4 +1,4 @@
-package com.example.rocketgame.repository;
+package com.example.rocketgame.models;
 
 public class User {
     private String name;

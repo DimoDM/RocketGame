@@ -1,5 +1,6 @@
 package com.example.rocketgame.repository;
 
+import com.example.rocketgame.models.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -13,7 +14,7 @@ public class FirebaseRepository {
     private DatabaseReference mUserRef = mDatabase.getReference("users");
     private DatabaseReference mRoomRef = mDatabase.getReference("rooms");
 
-    public void createNewPlayer(User  newUser){
+    public void createNewPlayer(User newUser){
         mUserRef.child(mAuthUser.getUid()).setValue(newUser);
     }
 
@@ -26,7 +27,7 @@ public class FirebaseRepository {
     }
 
     public void createRoom(){
-        
+
     }
 
 }
