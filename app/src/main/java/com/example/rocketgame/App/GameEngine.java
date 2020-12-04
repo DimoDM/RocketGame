@@ -33,6 +33,7 @@ public class GameEngine{
 
     public static Manager manager;
     public Entity player;
+    public static gameStages GAMESTAGE;
 
     public static final int SCREEN_WIDTH = Resources.getSystem().getDisplayMetrics().widthPixels;
     public static final int SCREEN_HEIGHT = Resources.getSystem().getDisplayMetrics().heightPixels;
@@ -41,6 +42,13 @@ public class GameEngine{
         groupPlayer,
         groupBullets,
         groupAsteroids
+    }
+
+    public enum gameStages {
+        stagePlay,
+        stagePause,
+        stageDie,
+        stageMenu
     }
 
     public GameEngine(){
@@ -70,8 +78,10 @@ public class GameEngine{
     }
 
     public void update() {
-        manager.update();
-        ColliderManager.checkAttack(manager.getGroup(groupLabels.groupBullets.ordinal()), manager.getGroup(groupLabels.groupAsteroids.ordinal()));
+        if(GAMESTAGE == gameStages.stagePlay) {
+            manager.update();
+            ColliderManager.checkAttack(manager.getGroup(groupLabels.groupBullets.ordinal()), manager.getGroup(groupLabels.groupAsteroids.ordinal()));
+        }
     }
 
     public boolean handleInput(View v, MotionEvent e) {

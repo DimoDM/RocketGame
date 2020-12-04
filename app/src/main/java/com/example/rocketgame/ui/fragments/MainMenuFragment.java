@@ -3,6 +3,7 @@ package com.example.rocketgame.ui.fragments;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 import com.example.rocketgame.core.contract.MainMenuFragmentContract;
 import com.example.rocketgame.databinding.FragmentMainMenuBinding;
@@ -24,6 +25,7 @@ implements MainMenuFragmentContract.ViewListener {
 
     @Override
     protected void onFragmentCreated(View view, Bundle savedInstanceState) {
+        GameEngine.GAMESTAGE = GameEngine.gameStages.stageMenu;
         presentListener.setViewListener(this);
         binding.playBtn.setOnClickListener(v -> presentListener.onPlayBtnClicked());
     }
