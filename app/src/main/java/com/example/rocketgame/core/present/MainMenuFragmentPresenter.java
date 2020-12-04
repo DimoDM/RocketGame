@@ -10,4 +10,9 @@ public class MainMenuFragmentPresenter implements MainMenuFragmentContract.Prese
     public void setViewListener(MainMenuFragmentContract.ViewListener viewListener) {
         this.viewListener = viewListener;
     }
+
+    @Override
+    public void onPlayBtnClicked() {
+        viewListener.goToGameScreen();
+    }
 }

@@ -2,6 +2,8 @@ package com.example.rocketgame.ui.activities;
 
 
 import android.os.Bundle;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
@@ -14,6 +16,7 @@ public abstract class BaseActivity extends DaggerAppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getSupportActionBar().hide();
         setContentView(getLayoutRes());
         onViewCreated();
     }

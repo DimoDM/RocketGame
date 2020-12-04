@@ -10,6 +10,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.R;
 
+import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
 import com.example.rocketgame.ui.texture.GameView;
@@ -18,7 +19,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Inject;
 
-public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener {
+public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
+GameFragment.OnGameFragmentInteractionListener,
+GameView.OnDieListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
     }
 
+
     private void pushFragment(Fragment fragment, String fragmentTag, boolean addToStack) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager()
                 .beginTransaction()
@@ -46,5 +50,30 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
             fragmentTransaction.addToBackStack(fragmentTag);
         }
         fragmentTransaction.commit();
+    }
+
+    @Override
+    public void startGame() {
+        pushFragment(new GameFragment(), GameFragment.TAG, false);
+    }
+
+    @Override
+    public void goToShop() {
+
+    }
+
+    @Override
+    public void showClassation() {
+
+    }
+
+    @Override
+    public void pauseGame() {
+        pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
+    }
+
+    @Override
+    public void goToMainMenu() {
+        pauseGame();
     }
 }

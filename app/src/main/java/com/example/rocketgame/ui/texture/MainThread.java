@@ -12,7 +12,7 @@ public class MainThread extends Thread {
     private SurfaceHolder surfaceHolder;
     private boolean running;
     public static Canvas canvas;
-    private int targetFPS = 30;
+    private int targetFPS = 60;
     private double averageFPS;
 
 
@@ -42,6 +42,7 @@ public class MainThread extends Thread {
             try {
                 canvas = this.surfaceHolder.lockCanvas();
                 synchronized (surfaceHolder) {
+                    this.gameView.Move();
                     this.gameView.update();
                     this.gameView.draw(canvas);
                 }

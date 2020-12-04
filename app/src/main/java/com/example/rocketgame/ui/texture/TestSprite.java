@@ -24,6 +24,8 @@ public class TestSprite {
         image = bmp;
         x = 100;
         y = 100;
+        //image.setHeight(screenHeight/4);
+        //image.setWidth(screenHeight/4);
     }
 
 
