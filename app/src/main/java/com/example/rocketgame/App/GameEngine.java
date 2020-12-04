@@ -82,14 +82,15 @@ public class GameEngine{
     }
 
     public void update() {
-        if(GAMESTAGE == gameStages.stagePlay) {
+        if(GAMESTAGE == gameStages.stagePlay && player != null && player.hasComponent(new HandleInput())) {
             manager.update();
             colliderManager.checkCollide(manager.getGroup(groupLabels.groupBullets.ordinal()), manager.getGroup(groupLabels.groupAsteroids.ordinal()));
         }
     }
 
     public boolean handleInput(View v, MotionEvent e) {
-        return player.getComponent(new HandleInput()).onTouch(v, e);
+        return (player != null && player.hasComponent(new HandleInput())) ?
+                player.getComponent(new HandleInput()).onTouch(v, e) : false;
     }
 
     public void draw() {

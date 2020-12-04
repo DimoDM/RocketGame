@@ -22,7 +22,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
-GameFragment.OnGameFragmentInteractionListener{
+GameFragment.OnGameFragmentInteractionListener,
+GameView.OnDieListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -73,5 +74,10 @@ GameFragment.OnGameFragmentInteractionListener{
     @Override
     public void pauseGame() {
         pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
+    }
+
+    @Override
+    public void goToMainMenu() {
+        pauseGame();
     }
 }

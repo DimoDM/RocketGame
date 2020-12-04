@@ -1,6 +1,7 @@
 package com.example.rocketgame.ui.texture;
 
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,12 +29,15 @@ import com.example.rocketgame.ui.activities.MainActivity;
 public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private MainThread thread;
     private GameEngine gameEngine;
+    private OnDieListener listener;
 
 
     public GameView(Context context, AttributeSet attributeSet) {
         super(context, attributeSet);
 
         getHolder().addCallback(this);
+
+        listener = (OnDieListener) context;
 
         thread = new MainThread(getHolder(), this);
 
@@ -92,8 +96,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         gameEngine.update();
         if(GameEngine.GAMESTAGE == GameEngine.gameStages.stageDie) {
             gameEngine.init();
-            Intent i = new Intent(RocketGameApplication.APP.getApplicationContext(), LogInWithFacebookActivity.class);
-            RocketGameApplication.APP.getApplicationContext().startActivity(i);
+            listener.goToMainMenu();
         }
     }
 
@@ -104,6 +107,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         if (canvas != null) {
             gameEngine.draw();
         }
+    }
+
+
+
+    public interface OnDieListener {
+        void goToMainMenu();
     }
 
 
