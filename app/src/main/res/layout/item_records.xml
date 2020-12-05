@@ -34,7 +34,7 @@
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toEndOf="@id/txtPosition"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Username"
+        android:text="Dimo Marinov"
         tools:ignore="SmallSp" />
 
     <TextView

@@ -55,12 +55,13 @@ public class AsteroidComponent extends Component {
 
     public void destroy() {
         width = ((int) (Math.random() * 3 + 1)) * 50;
+        health.setHealth(width / 50);
+        width *= GameEngine.SCREEN_WIDTH < 400 ? 2 : 1;
         height = width;
         transform.setPosition(new Rect((int) (Math.random() * GameEngine.SCREEN_WIDTH), -height * 2, width, height));
         transform.setVelY(speed);
         transform.setVelX((int)(Math.random() * 2) == 1 ? 0.5f : -0.5f);
         GameEngine.manager.getGroup(GameEngine.groupLabels.groupPlayer.ordinal()).get(0).getComponent(new ScoreComponent()).addToScore(health.getMaxHealth());
-        health.setHealth(width / 50);
         sprite.setPath(R.drawable.asteroid);
         sprite.setTransform(transform);
         sprite.reloadTexture();

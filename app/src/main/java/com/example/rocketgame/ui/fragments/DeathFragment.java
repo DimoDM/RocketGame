@@ -8,9 +8,11 @@ import android.view.View;
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 import com.example.rocketgame.RocketGameApplication;
+import com.example.rocketgame.api.ApiWrapper;
 import com.example.rocketgame.core.contract.DeathFragmentContract;
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
 import com.example.rocketgame.databinding.FragmentSinglePlayerDeadBinding;
+import com.example.rocketgame.repository.FirebaseRepository;
 
 import javax.inject.Inject;
 
@@ -35,8 +37,13 @@ public class DeathFragment extends BaseFragment<FragmentSinglePlayerDeadBinding,
         binding.btnRetry.setOnClickListener(v -> presentListener.onRestartBtnClicked());
         sharedPreferences = RocketGameApplication.APP.getSharedPreferences(RocketGameApplication.MYPREFERENCE, Context.MODE_PRIVATE);
         binding.lastScoreVal.setText(sharedPreferences.getString(RocketGameApplication.LASTSCORE, " "));
+        ApiWrapper.getInstance().getAllUser(l -> setHighScore(l.getHighScore()));
 
 
+    }
+
+    private void setHighScore(int score) {
+        binding.highScoreVal.setText(score + "");
     }
 
     @Override
