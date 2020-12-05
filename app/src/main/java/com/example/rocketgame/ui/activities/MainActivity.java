@@ -1,11 +1,15 @@
 package com.example.rocketgame.ui.activities;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -13,7 +17,6 @@ import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 import com.example.rocketgame.models.MultiPlayerUser;
 import com.example.rocketgame.repository.FirebaseRepository;
-import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
 import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.JoinMultiplayerFragment;
@@ -23,8 +26,6 @@ import com.example.rocketgame.ui.fragments.MultiplayerHostFragment;
 import com.example.rocketgame.ui.fragments.PauseMenuFragment;
 import com.example.rocketgame.ui.texture.GameView;
 
-import javax.inject.Inject;
-
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
         GameFragment.OnGameFragmentInteractionListener,
         GameView.OnDieListener,
@@ -33,6 +34,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         DeathFragment.OnDeathFragmentInteractionListener {
 
     private static final int SCANNER_RESULT_CODE = 12;
+    private static final int PERMISSION_REQUEST_CODE = 37;
+    private final String[] permissions = {Manifest.permission.CAMERA};
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -71,6 +74,12 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
             MultiPlayerUser user = MultiPlayerUser.getInstance();
             user.setRoomId(code);
             FirebaseRepository.getInstance().player2ConnectToRoom(code, user);
+        }
+    }
+
+    private void askForPermissions(){
+        if(ContextCompat.checkSelfPermission(getApplicationContext(), permissions[0]) != PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(MainActivity.this, permissions,PERMISSION_REQUEST_CODE);
         }
     }
 
@@ -143,7 +152,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
     @Override
     public void joinMultiplayerWithQRCode() {
-        startActivityForResult(new Intent(MainActivity.this,QRReaderActivity.class),SCANNER_RESULT_CODE);
+        askForPermissions();
+        startActivityForResult(new Intent(MainActivity.this, QRReaderActivity.class), SCANNER_RESULT_CODE);
     }
 
 

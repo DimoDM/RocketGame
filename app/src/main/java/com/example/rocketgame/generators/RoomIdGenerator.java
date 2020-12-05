@@ -1,4 +1,4 @@
-package com.example.rocketgame;
+package com.example.rocketgame.generators;
 
 import android.os.AsyncTask;
 

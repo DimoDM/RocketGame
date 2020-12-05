@@ -6,6 +6,9 @@ import android.view.View;
 import com.example.rocketgame.R;
 import com.example.rocketgame.core.contract.MultiplayerHostFragmentContract;
 import com.example.rocketgame.databinding.FragmentMultiplayerGameHostBinding;
+import com.example.rocketgame.generators.QRGenerator;
+import com.example.rocketgame.models.MultiPlayerUser;
+import com.google.firebase.auth.FirebaseUser;
 
 import javax.inject.Inject;
 
@@ -25,17 +28,12 @@ implements MultiplayerHostFragmentContract.ViewListener {
         presentListener.setViewListener(this);
         binding.btnHome.setOnClickListener(v -> presentListener.onHomeButtonClicked());
         binding.btnReadyUnready.setOnClickListener(v -> presentListener.onReadyUnradyButtonClicked());
-        binding.imageButton.setOnClickListener(v-> presentListener.onSwitchViewButtonClicked());
+        binding.QRContainer.setImageBitmap(QRGenerator.generateQRBitmap(MultiPlayerUser.getInstance().getRoomId()));
     }
 
     @Override
     public void goToMainMenu() {
         activityListener.goToMainMenu();
-    }
-
-    @Override
-    public void switchView() {
-        activityListener.switchView();
     }
 
     @Override
@@ -46,7 +44,6 @@ implements MultiplayerHostFragmentContract.ViewListener {
 
     public interface OnMultiplayerHostFragmentIterationListener{
         void goToMainMenu();
-        void switchView();
         void setReady();
     }
 }

@@ -20,11 +20,6 @@ public class MultiplayerHostFragmentPresenter implements MultiplayerHostFragment
     }
 
     @Override
-    public void onSwitchViewButtonClicked() {
-        listener.switchView();
-    }
-
-    @Override
     public void onHomeButtonClicked() {
         listener.goToMainMenu();
     }

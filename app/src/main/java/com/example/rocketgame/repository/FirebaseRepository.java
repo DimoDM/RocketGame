@@ -1,6 +1,6 @@
 package com.example.rocketgame.repository;
 
-import com.example.rocketgame.RoomIdGenerator;
+import com.example.rocketgame.generators.RoomIdGenerator;
 import com.example.rocketgame.models.MultiPlayerUser;
 import com.example.rocketgame.models.Room;
 import com.example.rocketgame.models.User;
