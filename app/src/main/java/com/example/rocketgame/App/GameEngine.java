@@ -50,7 +50,8 @@ public class GameEngine{
         stagePlay,
         stagePause,
         stageDie,
-        stageMenu
+        stageMenu,
+        stageRestart
     }
 
     public GameEngine(){
