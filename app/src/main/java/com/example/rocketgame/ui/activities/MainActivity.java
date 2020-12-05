@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         GameView.OnDieListener,
         MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener,
         JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener,
-        MultiplayerFragment.OnMultiplayerFragmentIterationListener, {
+        MultiplayerFragment.OnMultiplayerFragmentIterationListener {
 
 
     @Override
