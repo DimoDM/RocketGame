@@ -8,11 +8,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 
+import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
+import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
+import com.example.rocketgame.ui.fragments.PauseMenuFragment;
 import com.example.rocketgame.ui.texture.GameView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,7 +25,8 @@ import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
 GameFragment.OnGameFragmentInteractionListener,
-GameView.OnDieListener{
+GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
+DeathFragment.OnDeathFragmentInteractionListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -53,6 +58,16 @@ GameView.OnDieListener{
     }
 
     @Override
+    public void goToMenu() {
+        pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
+    }
+
+    @Override
+    public void die() {
+        pushFragment(new DeathFragment(), DeathFragment.TAG, false);
+    }
+
+    @Override
     public void startGame() {
         pushFragment(new GameFragment(), GameFragment.TAG, false);
     }
@@ -69,11 +84,24 @@ GameView.OnDieListener{
 
     @Override
     public void pauseGame() {
-        pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
+        pushFragment(new PauseMenuFragment(), PauseMenuFragment.TAG, false);
     }
 
     @Override
     public void goToMainMenu() {
-        pauseGame();
+        GameEngine.GAMESTAGE = GameEngine.gameStages.stageFlag;
+        pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
     }
+
+
+    @Override
+    public void goToGameFragment() {
+        pushFragment(new GameFragment(), GameFragment.TAG, false);
+    }
+
+    @Override
+    public void RestartGame() {
+        GameEngine.GAMESTAGE = GameEngine.gameStages.stageRestart;
+    }
+
 }
