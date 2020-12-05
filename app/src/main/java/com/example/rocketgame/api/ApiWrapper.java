@@ -39,12 +39,12 @@ public class ApiWrapper {
                 if(response.isSuccessful()){
                     listener.onUsersReceived(response.body());
                 }
-                else listener.onFailure();
+                //else listener.onFailure();
             }
 
             @Override
             public void onFailure(Call<HashMap<String, User>> call, Throwable t) {
-                listener.onFailure();
+                //listener.onFailure();
             }
         });
     }
@@ -55,23 +55,23 @@ public class ApiWrapper {
             public void onResponse(Call<User> call, Response<User> response) {
                 if(response.isSuccessful())
                     listener.onUserReceived(response.body());
-                else listener.onFailure();
+                //else listener.onFailure();
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                listener.onFailure();
+                //listener.onFailure();
             }
         });
     }
 
     public interface OnUserListener{
         void onUserReceived(User user);
-        void onFailure();
+       // void onFailure();
     }
 
     public interface OnAllUsersListener{
         void onUsersReceived(HashMap<String, User> users);
-        void onFailure();
+      //  void onFailure();
     }
 }

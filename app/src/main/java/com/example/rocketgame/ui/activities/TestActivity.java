@@ -33,11 +33,11 @@ public class TestActivity extends AppCompatActivity {
                         Log.d(TAG, user.toString());
                     }
                 }
-
+/*
                 @Override
                 public void onFailure() {
                     Log.d(TAG, "NEEEEEEEEEEEEEEEE");
-                }
+                }*/
             });
 
         });

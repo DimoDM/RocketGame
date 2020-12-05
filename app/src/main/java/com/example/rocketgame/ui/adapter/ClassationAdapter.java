@@ -40,8 +40,9 @@ public class ClassationAdapter extends RecyclerView.Adapter<ClassationAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         User user = users.get(position);
+        holder.position.setText((position + 1) + "");
         holder.username.setText(user.getName());
-        holder.score.setText(user.getHighScore());
+        holder.score.setText(user.getHighScore() + "");
     }
 
     @Override
@@ -51,18 +52,33 @@ public class ClassationAdapter extends RecyclerView.Adapter<ClassationAdapter.Vi
 
     public void setUsers(List<User> users) {
         this.users = users;
+        sortUsers();
         notifyDataSetChanged();
+    }
+
+    private void sortUsers() {
+        for (int i = 0; i < users.size(); i++) {
+            for (int j = i; j < users.size(); j++) {
+                if(users.get(i).getHighScore() < users.get(j).getHighScore()) {
+                    User u = users.get(i);
+                    users.set(i, users.get(j));
+                    users.set(j, u);
+                }
+            }
+        }
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView username;
         TextView score;
+        TextView position;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             username = itemView.findViewById(R.id.txtUsername);
             score = itemView.findViewById(R.id.txtScore);
+            position = itemView.findViewById(R.id.txtPosition);
         }
 
     }
