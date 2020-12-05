@@ -13,6 +13,7 @@ import com.example.rocketgame.R;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
+import com.example.rocketgame.ui.fragments.MultiplayerHostFragment;
 import com.example.rocketgame.ui.texture.GameView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
@@ -21,7 +22,7 @@ import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
 GameFragment.OnGameFragmentInteractionListener,
-GameView.OnDieListener{
+GameView.OnDieListener, MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -75,5 +76,15 @@ GameView.OnDieListener{
     @Override
     public void goToMainMenu() {
         pauseGame();
+    }
+
+    @Override
+    public void switchView() {
+
+    }
+
+    @Override
+    public void setReady() {
+
     }
 }

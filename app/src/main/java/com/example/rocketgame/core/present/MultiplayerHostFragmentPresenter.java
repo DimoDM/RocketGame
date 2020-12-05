@@ -2,29 +2,30 @@ package com.example.rocketgame.core.present;
 
 import com.example.rocketgame.core.contract.JoinMultiplayerFragmentContract;
 import com.example.rocketgame.core.contract.MultiplayerFragmentContract;
+import com.example.rocketgame.core.contract.MultiplayerHostFragmentContract;
 
-public class MultiplayerHostFragmentPresenter implements JoinMultiplayerFragmentContract.PresentListener {
+public class MultiplayerHostFragmentPresenter implements MultiplayerHostFragmentContract.PresentListener {
 
-    JoinMultiplayerFragmentContract.ViewListener listener;
+    MultiplayerHostFragmentContract.ViewListener listener;
 
 
     @Override
-    public void setViewListener(JoinMultiplayerFragmentContract.ViewListener viewListener) {
+    public void setViewListener(MultiplayerHostFragmentContract.ViewListener viewListener) {
         listener = viewListener;
     }
 
     @Override
+    public void onReadyUnradyButtonClicked() {
+        listener.setReady();
+    }
+
+    @Override
+    public void onSwitchViewButtonClicked() {
+        listener.switchView();
+    }
+
+    @Override
     public void onHomeButtonClicked() {
-        listener.goToMainScreen();
-    }
-
-    @Override
-    public void onEnterCodeButtonClicked() {
-        listener.joinMultiplayerWithManualCode();
-    }
-
-    @Override
-    public void onScanQRCodeClicked() {
-        listener.joinMultiplayerWithQRCode();
+        listener.goToMainMenu();
     }
 }
