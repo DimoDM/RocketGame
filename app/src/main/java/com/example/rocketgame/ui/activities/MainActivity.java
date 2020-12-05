@@ -17,6 +17,7 @@ import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 import com.example.rocketgame.models.MultiPlayerUser;
 import com.example.rocketgame.repository.FirebaseRepository;
+import com.example.rocketgame.ui.fragments.ClassationFragment;
 import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.JoinMultiplayerFragment;
@@ -28,10 +29,14 @@ import com.example.rocketgame.ui.texture.GameView;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
         GameFragment.OnGameFragmentInteractionListener,
+        PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
+        DeathFragment.OnDeathFragmentInteractionListener,
+        ClassationFragment.OnClassationFragmentInteractionListener,
         GameView.OnDieListener,
         MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener,
-        JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener, MultiplayerFragment.OnMultiplayerFragmentIterationListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
-        DeathFragment.OnDeathFragmentInteractionListener {
+        JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener,
+        MultiplayerFragment.OnMultiplayerFragmentIterationListener{
+
 
     private static final int SCANNER_RESULT_CODE = 12;
     private static final int PERMISSION_REQUEST_CODE = 37;
@@ -105,7 +110,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
     @Override
     public void showClassation() {
-
+        pushFragment(new ClassationFragment(), ClassationFragment.TAG, false);
     }
 
     @Override

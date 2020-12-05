@@ -15,4 +15,14 @@ public class MainMenuFragmentPresenter implements MainMenuFragmentContract.Prese
     public void onPlayBtnClicked() {
         viewListener.goToGameScreen();
     }
+
+    @Override
+    public void onClassationBtnClicked() {
+        viewListener.goToClassationFragment();
+    }
+
+    @Override
+    public void onShopBtnClicked() {
+        viewListener.goToShopFragment();
+    }
 }

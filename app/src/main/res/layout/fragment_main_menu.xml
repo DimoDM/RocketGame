@@ -29,6 +29,7 @@
         />
 
     <Button
+        android:id="@+id/classation_btn"
         android:layout_width="130dp"
         android:layout_height="100dp"
         app:layout_constraintEnd_toStartOf="@id/guideline"
@@ -38,6 +39,7 @@
         />
 
     <Button
+        android:id="@+id/shop_btn"
         android:layout_width="130dp"
         android:layout_height="100dp"
         app:layout_constraintStart_toEndOf="@+id/guideline"

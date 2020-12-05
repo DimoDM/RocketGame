@@ -1,11 +1,13 @@
 package com.example.rocketgame.di.modules;
 
+import com.example.rocketgame.core.contract.ClassationFragmentContract;
 import com.example.rocketgame.core.contract.DeathFragmentContract;
 import com.example.rocketgame.core.contract.GameFragmentContract;
 import com.example.rocketgame.core.contract.MainMenuFragmentContract;
 import com.example.rocketgame.core.contract.MultiplayerFragmentContract;
 import com.example.rocketgame.core.contract.MultiplayerHostFragmentContract;
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
+import com.example.rocketgame.core.present.ClassationFragmentPresenter;
 import com.example.rocketgame.core.present.DeathFragmentPresenter;
 import com.example.rocketgame.core.present.GameFragmentPresenter;
 import com.example.rocketgame.core.present.MainMenuFragmentPresenter;
@@ -56,6 +58,12 @@ public class ContractsModule {
     public DeathFragmentContract.PresentListener provideDeathFragmentPresenter() {
         return new DeathFragmentPresenter();
 
+    }
+
+    @Singleton
+    @Provides
+    public ClassationFragmentContract.PresentListener provideClassationFragmentPresenter() {
+        return new ClassationFragmentPresenter();
     }
 
 
