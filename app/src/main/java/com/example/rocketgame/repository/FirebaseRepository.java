@@ -38,6 +38,7 @@ public class FirebaseRepository {
 
     public void createRoom(MultiPlayerUser player1) {
         String roomId = RoomIdGenerator.generateCode();
+        player1.setRoomId(roomId);
         Room room = new Room(roomId, player1);
         mRoomRef.child(roomId).setValue(room);
     }

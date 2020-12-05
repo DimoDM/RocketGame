@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.R;
 
+import com.example.rocketgame.models.MultiPlayerUser;
+import com.example.rocketgame.repository.FirebaseRepository;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.JoinMultiplayerFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
@@ -104,7 +106,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
     @Override
     public void createGameAndJoin() {
-
+        FirebaseRepository.getInstance().createRoom(MultiPlayerUser.getInstance());
     }
 
     @Override

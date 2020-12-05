@@ -12,12 +12,7 @@ public class MultiPlayerUser {
     private boolean isDead;
     private FirebaseUser mFirebaseUser = FirebaseAuth.getInstance().getCurrentUser();
     private static MultiPlayerUser instance;
-
-    public static MultiPlayerUser getInstance() {
-        if(instance == null)
-            instance = new MultiPlayerUser();
-        return instance;
-    }
+    private String roomId;
 
     private MultiPlayerUser() {
         this.uid = mFirebaseUser.getUid();
@@ -25,6 +20,20 @@ public class MultiPlayerUser {
         currentScore = 0;
         isReady = false;
         isDead = false;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
+    }
+
+    public static MultiPlayerUser getInstance() {
+        if(instance == null)
+            instance = new MultiPlayerUser();
+        return instance;
     }
 
 
