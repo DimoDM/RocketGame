@@ -32,4 +32,13 @@ public class User {
     public void setWins(int wins) {
         this.wins = wins;
     }
+
+    @Override
+    public String toString() {
+        return "user{" +
+                "name='" + name + '\'' +
+                ", highScore=" + highScore +
+                ", wins=" + wins +
+                '}';
+    }
 }
