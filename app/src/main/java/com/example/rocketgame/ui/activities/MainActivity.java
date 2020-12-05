@@ -20,6 +20,7 @@ import com.example.rocketgame.repository.FirebaseRepository;
 import com.example.rocketgame.ui.fragments.ClassationFragment;
 import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
+import com.example.rocketgame.ui.fragments.GameTypeChooseFragment;
 import com.example.rocketgame.ui.fragments.JoinMultiplayerFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 import com.example.rocketgame.ui.fragments.MultiplayerFragment;
@@ -35,7 +36,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         GameView.OnDieListener,
         MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener,
         JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener,
-        MultiplayerFragment.OnMultiplayerFragmentIterationListener {
+        MultiplayerFragment.OnMultiplayerFragmentIterationListener,
+        GameTypeChooseFragment.OnGameTypeChooseFragmentContractIterationListener {
 
 
     private static final int SCANNER_RESULT_CODE = 12;
@@ -101,7 +103,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
     @Override
     public void startGame() {
-        pushFragment(new GameFragment(), GameFragment.TAG, false);
+        pushFragment(new GameTypeChooseFragment(), GameTypeChooseFragment.TAG, false);
     }
 
     @Override
@@ -168,5 +170,15 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
     @Override
     public void RestartGame() {
         GameEngine.GAMESTAGE = GameEngine.gameStages.stageRestart;
+    }
+
+    @Override
+    public void goToMultiplayerPlayerFragment() {
+        pushFragment(new MultiplayerFragment(), MultiplayerFragment.TAG, false);
+    }
+
+    @Override
+    public void goToSinglePlayerFragment() {
+        pushFragment(new GameFragment(), GameFragment.TAG, false);
     }
 }

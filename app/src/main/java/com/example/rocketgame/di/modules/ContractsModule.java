@@ -3,6 +3,7 @@ package com.example.rocketgame.di.modules;
 import com.example.rocketgame.core.contract.ClassationFragmentContract;
 import com.example.rocketgame.core.contract.DeathFragmentContract;
 import com.example.rocketgame.core.contract.GameFragmentContract;
+import com.example.rocketgame.core.contract.GameTypeChooseFragmentContract;
 import com.example.rocketgame.core.contract.MainMenuFragmentContract;
 import com.example.rocketgame.core.contract.MultiplayerFragmentContract;
 import com.example.rocketgame.core.contract.MultiplayerHostFragmentContract;
@@ -10,10 +11,12 @@ import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
 import com.example.rocketgame.core.present.ClassationFragmentPresenter;
 import com.example.rocketgame.core.present.DeathFragmentPresenter;
 import com.example.rocketgame.core.present.GameFragmentPresenter;
+import com.example.rocketgame.core.present.GameTypeChooseFragmentPresenter;
 import com.example.rocketgame.core.present.MainMenuFragmentPresenter;
 import com.example.rocketgame.core.present.MultiplayerFragmentPresenter;
 import com.example.rocketgame.core.present.MultiplayerHostFragmentPresenter;
 import com.example.rocketgame.core.present.PauseMenuFragmentPresenter;
+import com.example.rocketgame.ui.fragments.GameTypeChooseFragment;
 
 import javax.inject.Singleton;
 
@@ -65,6 +68,14 @@ public class ContractsModule {
     public ClassationFragmentContract.PresentListener provideClassationFragmentPresenter() {
         return new ClassationFragmentPresenter();
     }
+
+    @Singleton
+    @Provides
+    public GameTypeChooseFragmentContract.PresentListener provideGameTypeChooseFragmentPresenter() {
+        return new GameTypeChooseFragmentPresenter();
+    }
+
+
 
 
 

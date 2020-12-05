@@ -9,9 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.rocketgame.R;
+import com.example.rocketgame.core.contract.GameTypeChooseFragmentContract;
+import com.example.rocketgame.core.contract.MainMenuFragmentContract;
 import com.example.rocketgame.databinding.FragmentGameTypeChooseBinding;
 
-public class GameTypeChooseFragment extends BaseFragment<FragmentGameTypeChooseBinding, GameTypeChooseFragment.OnGameTypeChooseFragmentContractIterationListener> {
+import javax.inject.Inject;
+
+public class GameTypeChooseFragment extends BaseFragment<FragmentGameTypeChooseBinding, GameTypeChooseFragment.OnGameTypeChooseFragmentContractIterationListener>
+        implements GameTypeChooseFragmentContract.ViewListener {
+
+    @Inject
+    GameTypeChooseFragmentContract.PresentListener presentListener;
 
     @Override
     protected int getLayoutRes() {
@@ -20,10 +28,23 @@ public class GameTypeChooseFragment extends BaseFragment<FragmentGameTypeChooseB
 
     @Override
     protected void onFragmentCreated(View view, Bundle savedInstanceState) {
+        presentListener.setViewListener(this);
+        binding.btnSingleplayer.setOnClickListener(v -> presentListener.onSinglePlayerBtnClicked());
+        //binding.btnMultiplayer.setOnClickListener(v -> presentListener.onMultiplayerPlayerBtnClicked());
+    }
 
+    @Override
+    public void goToSinglePlayerFragment() {
+        activityListener.goToSinglePlayerFragment();
+    }
+
+    @Override
+    public void goToMultiplayerPlayerFragment() {
+        activityListener.goToMultiplayerPlayerFragment();
     }
 
     public interface OnGameTypeChooseFragmentContractIterationListener{
-
+        void goToMultiplayerPlayerFragment();
+        void goToSinglePlayerFragment();
     }
 }

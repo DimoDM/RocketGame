@@ -56,7 +56,7 @@ public class AsteroidComponent extends Component {
     public void destroy() {
         width = ((int) (Math.random() * 3 + 1)) * 50;
         health.setHealth(width / 50);
-        width *= GameEngine.SCREEN_HEIGHT < 500 ? 1 : 2;
+        width *= GameEngine.SCREEN_HEIGHT < 900 ? 1 : 2;
         height = width;
         transform.setPosition(new Rect((int) (Math.random() * GameEngine.SCREEN_WIDTH), -height * 2, width, height));
         transform.setVelY(speed);
