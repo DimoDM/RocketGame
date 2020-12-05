@@ -11,6 +11,7 @@ import android.util.Log;
 import com.example.rocketgame.R;
 import com.example.rocketgame.databinding.ActivityLogInBinding;
 import com.example.rocketgame.models.User;
+import com.example.rocketgame.repository.FirebaseRepository;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -93,6 +94,8 @@ public class LogInActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Log.d(TAG, "signInWithCredential:success");
                             FirebaseUser user = mAuth.getCurrentUser();
+                            User newUser = new User(user.getDisplayName()); //literally
+                            FirebaseRepository.getInstance().createNewPlayer(newUser);
                             updateUI();
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());

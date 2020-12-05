@@ -1,5 +1,6 @@
 package com.example.rocketgame.ui.fragments;
 
+import android.app.Application;
 import android.os.Bundle;
 import android.view.View;
 
@@ -13,9 +14,6 @@ import com.example.rocketgame.databinding.FrgmentClassationBinding;
 import com.example.rocketgame.ui.adapter.ClassationAdapter;
 
 import javax.inject.Inject;
-
-
-
 public class ClassationFragment extends BaseFragment<FrgmentClassationBinding, ClassationFragment.OnClassationFragmentInteractionListener>
 implements ClassationFragmentContract.ViewListener{
 
