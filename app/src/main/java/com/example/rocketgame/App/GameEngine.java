@@ -55,8 +55,8 @@ public class GameEngine{
         player = manager.addEntity();
         colliderManager = new ColliderManager();
         GAMESTAGE = gameStages.stageMenu;
-        int playerWidth = SCREEN_WIDTH < 500 ? 80 : 160;
-        int playerHeight = SCREEN_WIDTH < 500 ? 110 : 220;
+        int playerWidth = SCREEN_HEIGHT < 750 ? 80 : 160;
+        int playerHeight = SCREEN_HEIGHT< 750 ? 110 : 220;
         player.addGroup(groupLabels.groupPlayer.ordinal());
         player.addComponent(new TransformComponent(((SCREEN_WIDTH - playerWidth)/2), (SCREEN_HEIGHT - playerHeight), playerWidth, playerHeight));
         player.addComponent(new SpriteComponent(player.getComponent(new TransformComponent()), R.drawable.rocket, 110));

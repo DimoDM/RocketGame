@@ -20,15 +20,11 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -42,7 +38,7 @@ public class LogInActivity extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         if(mAuth.getCurrentUser() != null){
-            updateUI();
+            continueToGame();
         }
     }
 
@@ -58,6 +54,7 @@ public class LogInActivity extends AppCompatActivity {
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         mBinding.signInButton.setSize(SignInButton.SIZE_STANDARD);
         mBinding.signInButton.setOnClickListener(v -> signIn());
+        mBinding.btnSkipLgn.setOnClickListener(v-> continueToGame());
     }
 
 
@@ -96,16 +93,16 @@ public class LogInActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             User newUser = new User(user.getDisplayName()); //literally
                             FirebaseRepository.getInstance().createNewPlayer(newUser);
-                            updateUI();
+                            continueToGame();
                         } else {
                             Log.w(TAG, "signInWithCredential:failure", task.getException());
-                            updateUI();
+                            continueToGame();
                         }
                     }
                 });
     }
 
-    private void updateUI(){
+    private void continueToGame(){
         startActivity(new Intent(this, MainActivity.class));
         finish();
     }
