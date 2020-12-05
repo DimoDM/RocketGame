@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.budiyev.android.codescanner.CodeScanner;
-import com.budiyev.android.codescanner.CodeScannerView;
 import com.example.rocketgame.R;
 import com.example.rocketgame.databinding.ActivityQRReaderBinding;
 
@@ -35,5 +34,4 @@ public class QRReaderActivity extends AppCompatActivity {
         super.onResume();
         mCodeScanner.startPreview();
     }
-}
 }

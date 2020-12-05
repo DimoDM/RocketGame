@@ -1,5 +1,6 @@
 package com.example.rocketgame.ui.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
@@ -31,6 +32,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener, MultiplayerFragment.OnMultiplayerFragmentIterationListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
         DeathFragment.OnDeathFragmentInteractionListener {
 
+    private static final int SCANNER_RESULT_CODE = 12;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
@@ -58,6 +61,17 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
             fragmentTransaction.addToBackStack(fragmentTag);
         }
         fragmentTransaction.commit();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == SCANNER_RESULT_CODE && resultCode == RESULT_OK){
+            String code = data.getStringExtra(QRReaderActivity.CODE);
+            MultiPlayerUser user = MultiPlayerUser.getInstance();
+            user.setRoomId(code);
+            FirebaseRepository.getInstance().player2ConnectToRoom(code, user);
+        }
     }
 
     @Override
@@ -129,7 +143,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
     @Override
     public void joinMultiplayerWithQRCode() {
-
+        startActivityForResult(new Intent(MainActivity.this,QRReaderActivity.class),SCANNER_RESULT_CODE);
     }
 
 
