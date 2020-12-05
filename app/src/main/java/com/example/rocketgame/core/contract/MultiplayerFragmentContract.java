@@ -1,6 +1,6 @@
 package com.example.rocketgame.core.contract;
 
-public interface MultiplayerContract {
+public interface MultiplayerFragmentContract {
 
     interface ViewListener{
         void goToMainScreen();
@@ -9,7 +9,7 @@ public interface MultiplayerContract {
     }
 
     interface PresenterListener{
-        void setViewListener(MultiplayerContract.ViewListener viewListener);
+        void setViewListener(MultiplayerFragmentContract.ViewListener viewListener);
         void onHomeButtonClicked();
         void onCreateRoomButtonClicked();
         void onJoinGameButtonClicked();

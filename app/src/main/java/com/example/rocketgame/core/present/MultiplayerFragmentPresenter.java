@@ -1,14 +1,13 @@
 package com.example.rocketgame.core.present;
 
-import com.example.rocketgame.core.contract.GameFragmentContract;
-import com.example.rocketgame.core.contract.MultiplayerContract;
+import com.example.rocketgame.core.contract.MultiplayerFragmentContract;
 
-public class MultiplayerPresenter implements MultiplayerContract.PresenterListener {
+public class MultiplayerFragmentPresenter implements MultiplayerFragmentContract.PresenterListener {
 
-    private MultiplayerContract.ViewListener listener;
+    private MultiplayerFragmentContract.ViewListener listener;
 
     @Override
-    public void setViewListener(MultiplayerContract.ViewListener viewListener) {
+    public void setViewListener(MultiplayerFragmentContract.ViewListener viewListener) {
         listener = viewListener;
     }
 

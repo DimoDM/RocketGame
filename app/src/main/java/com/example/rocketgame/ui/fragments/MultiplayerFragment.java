@@ -1,27 +1,20 @@
 package com.example.rocketgame.ui.fragments;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.databinding.DataBindingUtil;
-import androidx.fragment.app.Fragment;
 
 import com.example.rocketgame.R;
-import com.example.rocketgame.core.contract.MultiplayerContract;
+import com.example.rocketgame.core.contract.MultiplayerFragmentContract;
 import com.example.rocketgame.databinding.FragmentMultiplayerBinding;
 
 import javax.inject.Inject;
 
 public class MultiplayerFragment
         extends BaseFragment<FragmentMultiplayerBinding, MultiplayerFragment.OnMultiplayerFragmentIterationListener>
-        implements MultiplayerContract.ViewListener {
+        implements MultiplayerFragmentContract.ViewListener {
 
     @Inject
-    MultiplayerContract.PresenterListener presenterListener;
+    MultiplayerFragmentContract.PresenterListener presenterListener;
 
     @Override
     protected int getLayoutRes() {
