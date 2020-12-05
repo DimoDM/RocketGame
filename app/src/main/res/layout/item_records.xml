@@ -12,6 +12,19 @@
     android:padding="15dp">
 
     <TextView
+        android:id="@+id/txtPosition"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:textSize="20sp"
+        android:textColor="@color/font_color"
+        android:fontFamily="@font/pixelmix"
+        android:text="n"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SmallSp" />
+
+    <TextView
         android:id="@+id/txtUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -19,7 +32,7 @@
         android:textColor="@color/font_color"
         android:fontFamily="@font/pixelmix"
         android:layout_marginStart="15dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/txtPosition"
         app:layout_constraintTop_toTopOf="parent"
         android:text="Username"
         tools:ignore="SmallSp" />

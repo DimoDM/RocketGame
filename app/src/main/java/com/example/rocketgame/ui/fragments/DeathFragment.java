@@ -1,10 +1,13 @@
 package com.example.rocketgame.ui.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
+import com.example.rocketgame.RocketGameApplication;
 import com.example.rocketgame.core.contract.DeathFragmentContract;
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
 import com.example.rocketgame.databinding.FragmentSinglePlayerDeadBinding;
@@ -17,6 +20,8 @@ public class DeathFragment extends BaseFragment<FragmentSinglePlayerDeadBinding,
     @Inject
     DeathFragmentContract.PresentListener presentListener;
 
+    SharedPreferences sharedPreferences;
+
     @Override
     protected int getLayoutRes() {
         return R.layout.fragment_single_player_dead;
@@ -28,6 +33,10 @@ public class DeathFragment extends BaseFragment<FragmentSinglePlayerDeadBinding,
         presentListener.setViewListener(this);
         binding.btnHome.setOnClickListener(v -> presentListener.onMenuBtnClicked());
         binding.btnRetry.setOnClickListener(v -> presentListener.onRestartBtnClicked());
+        sharedPreferences = RocketGameApplication.APP.getSharedPreferences(RocketGameApplication.MYPREFERENCE, Context.MODE_PRIVATE);
+        binding.lastScoreVal.setText(sharedPreferences.getString(RocketGameApplication.LASTSCORE, " "));
+
+
     }
 
     @Override

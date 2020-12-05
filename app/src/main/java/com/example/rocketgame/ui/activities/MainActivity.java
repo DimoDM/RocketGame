@@ -35,7 +35,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
         GameView.OnDieListener,
         MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener,
         JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener,
-        MultiplayerFragment.OnMultiplayerFragmentIterationListener{
+        MultiplayerFragment.OnMultiplayerFragmentIterationListener {
 
 
     private static final int SCANNER_RESULT_CODE = 12;
