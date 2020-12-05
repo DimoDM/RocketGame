@@ -54,6 +54,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/highScoreVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="200"
@@ -80,6 +81,7 @@
                     android:textStyle="bold" />
 
                 <TextView
+                    android:id="@+id/lastScoreVal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="200"

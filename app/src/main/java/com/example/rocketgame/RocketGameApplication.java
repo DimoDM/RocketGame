@@ -15,6 +15,8 @@ public class RocketGameApplication  extends Application implements HasAndroidInj
     DispatchingAndroidInjector<Object> activityDispatchingAndroidInjector;
 
     public static RocketGameApplication APP;
+    public static final String LASTSCORE = "lastScore";
+    public static final String MYPREFERENCE = "myprf";
 
     @Override
     public void onCreate() {
