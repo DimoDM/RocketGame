@@ -6,13 +6,13 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.activities.LogInWithFacebookActivity">
+        tools:context=".ui.activities.LogInActivity">
 
-        <com.facebook.login.widget.LoginButton
-            android:id="@+id/fbLgnBtn"
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/signInButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="108dp"
+            android:layout_marginBottom="156dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -21,14 +21,13 @@
             android:id="@+id/btnSkipLgn"
             android:layout_width="100dp"
             android:layout_height="30dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginStart="152dp"
+            android:layout_marginTop="96dp"
             android:background="@drawable/skip_btn"
             android:text="Skip"
             android:textColor="@android:color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fbLgnBtn" />
+            app:layout_constraintTop_toBottomOf="@+id/signInButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
