@@ -100,6 +100,7 @@
             android:text="@string/retry"
             android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btnHome"
             app:layout_constraintTop_toTopOf="@+id/btnHome" />
 
         <Button
@@ -114,6 +115,7 @@
             android:text="@string/home"
             android:textAllCaps="true"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/btnRetry"
             app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

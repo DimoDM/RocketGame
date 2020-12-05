@@ -96,6 +96,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         gameEngine.update();
         if(GameEngine.GAMESTAGE == GameEngine.gameStages.stageDie) {
             gameEngine.init();
+            listener.die();
+        }
+        if(GameEngine.GAMESTAGE == GameEngine.gameStages.stageFlag) {
+            gameEngine.init();
             listener.goToMenu();
         }
         if(GameEngine.GAMESTAGE == GameEngine.gameStages.stageRestart) {
@@ -117,6 +121,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
 
     public interface OnDieListener {
         void goToMenu();
+        void die();
         void startGame();
     }
 

@@ -1,8 +1,10 @@
 package com.example.rocketgame.di.modules;
 
+import com.example.rocketgame.core.contract.DeathFragmentContract;
 import com.example.rocketgame.core.contract.GameFragmentContract;
 import com.example.rocketgame.core.contract.MainMenuFragmentContract;
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
+import com.example.rocketgame.core.present.DeathFragmentPresenter;
 import com.example.rocketgame.core.present.GameFragmentPresenter;
 import com.example.rocketgame.core.present.MainMenuFragmentPresenter;
 import com.example.rocketgame.core.present.PauseMenuFragmentPresenter;
@@ -33,6 +35,13 @@ public class ContractsModule {
     public PauseMenuFragmentContract.PresentListener providePauseMenuFragmentPresenter() {
         return new PauseMenuFragmentPresenter();
     }
+
+    @Singleton
+    @Provides
+    public DeathFragmentContract.PresentListener provideDeathFragmentPresenter() {
+        return new DeathFragmentPresenter();
+    }
+
 
 
 }

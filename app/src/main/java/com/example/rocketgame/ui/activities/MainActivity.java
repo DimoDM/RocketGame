@@ -12,6 +12,7 @@ import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
+import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
@@ -24,7 +25,8 @@ import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
 GameFragment.OnGameFragmentInteractionListener,
-GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener {
+GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
+DeathFragment.OnDeathFragmentInteractionListener{
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,6 +63,11 @@ GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener
     }
 
     @Override
+    public void die() {
+        pushFragment(new DeathFragment(), DeathFragment.TAG, false);
+    }
+
+    @Override
     public void startGame() {
         pushFragment(new GameFragment(), GameFragment.TAG, false);
     }
@@ -82,7 +89,7 @@ GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener
 
     @Override
     public void goToMainMenu() {
-        GameEngine.GAMESTAGE = GameEngine.gameStages.stageDie;
+        GameEngine.GAMESTAGE = GameEngine.gameStages.stageFlag;
         pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
     }
 
