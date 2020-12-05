@@ -121,11 +121,6 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
 
     @Override
-    public void switchView() {
-
-    }
-
-    @Override
     public void setReady() {
 
     }
@@ -143,6 +138,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
     @Override
     public void createGameAndJoin() {
         FirebaseRepository.getInstance().createRoom(MultiPlayerUser.getInstance());
+        pushFragment(new MultiplayerHostFragment(), MainMenuFragment.TAG, false);
     }
 
     @Override

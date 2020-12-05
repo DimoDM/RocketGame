@@ -53,6 +53,14 @@ public class MultiPlayerUser {
         return isReady;
     }
 
+    public void setReady( ) {
+        isReady = !isReady;
+    }
+
+    public void setDead(boolean dead) {
+        isDead = dead;
+    }
+
     public boolean isDead() {
         return isDead;
     }
