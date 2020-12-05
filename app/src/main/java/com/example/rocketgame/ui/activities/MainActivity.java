@@ -10,25 +10,31 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
-
+import com.example.rocketgame.models.MultiPlayerUser;
+import com.example.rocketgame.repository.FirebaseRepository;
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
 import com.example.rocketgame.ui.fragments.ClassationFragment;
 import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
+import com.example.rocketgame.ui.fragments.JoinMultiplayerFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
-
+import com.example.rocketgame.ui.fragments.MultiplayerFragment;
+import com.example.rocketgame.ui.fragments.MultiplayerHostFragment;
 import com.example.rocketgame.ui.fragments.PauseMenuFragment;
 import com.example.rocketgame.ui.texture.GameView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
 
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
         GameFragment.OnGameFragmentInteractionListener,
-        GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
+        PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
         DeathFragment.OnDeathFragmentInteractionListener,
-        ClassationFragment.OnClassationFragmentInteractionListener {
+        ClassationFragment.OnClassationFragmentInteractionListener,
+        GameView.OnDieListener,
+        MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener,
+        JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener,
+        MultiplayerFragment.OnMultiplayerFragmentIterationListener, {
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,6 +103,42 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
 
     @Override
+    public void switchView() {
+
+    }
+
+    @Override
+    public void setReady() {
+
+    }
+
+    @Override
+    public void goToMainScreen() {
+
+    }
+
+    @Override
+    public void goToEnterGameScreen() {
+        pushFragment(new JoinMultiplayerFragment(), MainMenuFragment.TAG, false);
+    }
+
+    @Override
+    public void createGameAndJoin() {
+        FirebaseRepository.getInstance().createRoom(MultiPlayerUser.getInstance());
+    }
+
+    @Override
+    public void joinMultiplayerWithManualCode() {
+
+    }
+
+    @Override
+    public void joinMultiplayerWithQRCode() {
+
+    }
+
+
+    @Override
     public void goToGameFragment() {
         pushFragment(new GameFragment(), GameFragment.TAG, false);
     }
@@ -105,5 +147,4 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
     public void RestartGame() {
         GameEngine.GAMESTAGE = GameEngine.gameStages.stageRestart;
     }
-
 }
