@@ -16,26 +16,34 @@ public class FirebaseRepository {
     private FirebaseDatabase mDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference mUserRef = mDatabase.getReference("users");
     private DatabaseReference mRoomRef = mDatabase.getReference("rooms");
+    private static FirebaseRepository instance;
 
-    public void createNewPlayer(User newUser){
+    public static FirebaseRepository getInstance() {
+        if (instance == null)
+            instance = new FirebaseRepository();
+        return instance;
+    }
+
+    public void createNewPlayer(User newUser) {
         mUserRef.child(mAuthUser.getUid()).setValue(newUser);
     }
 
-    public void updateHighScore(int newHighScore){
+    public void updateHighScore(int newHighScore) {
         mUserRef.child(mAuthUser.getUid()).child("highScore").setValue(newHighScore);
     }
 
-    public void updateWins(int wins){
+    public void updateWins(int wins) {
         mUserRef.child(mAuthUser.getUid()).child("wins").setValue(wins);
     }
 
-    public void createRoom(MultiPlayerUser player1){
+    public void createRoom(MultiPlayerUser player1) {
         String roomId = RoomIdGenerator.generateCode();
+        player1.setRoomId(roomId);
         Room room = new Room(roomId, player1);
         mRoomRef.child(roomId).setValue(room);
     }
 
-    public void player2ConnectToRoom(String roomId,MultiPlayerUser player2){
+    public void player2ConnectToRoom(String roomId, MultiPlayerUser player2) {
         mRoomRef.child(roomId).child("player2").setValue(player2);
     }
 

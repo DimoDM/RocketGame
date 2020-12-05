@@ -1,27 +1,17 @@
 package com.example.rocketgame.ui.texture;
 
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.os.Build;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.SurfaceHolder;
-import android.view.View;
 
 import androidx.annotation.RequiresApi;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.rocketgame.App.GameEngine;
-import com.example.rocketgame.R;
-import com.example.rocketgame.RocketGameApplication;
-import com.example.rocketgame.ui.activities.LogInWithFacebookActivity;
-import com.example.rocketgame.ui.activities.MainActivity;
 
 //import androidx.annotation.MainThread;
 
