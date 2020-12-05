@@ -79,6 +79,7 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
             MultiPlayerUser user = MultiPlayerUser.getInstance();
             user.setRoomId(code);
             FirebaseRepository.getInstance().player2ConnectToRoom(code, user);
+            pushFragment(new MultiplayerHostFragment(), MainMenuFragment.TAG, false);
         }
     }
 

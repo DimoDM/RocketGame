@@ -15,4 +15,5 @@
     <string name="last_play">Last play:</string>
     <string name="random_score">200</string>
     <string name="txt_enter_code_menually">Enter Code Menually</string>
+    <string name="multiplayer">Multiplayer</string>
 </resources>
