@@ -11,8 +11,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.rocketgame.R;
 
 import com.example.rocketgame.ui.fragments.GameFragment;
+import com.example.rocketgame.ui.fragments.JoinMultiplayerFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
 
+import com.example.rocketgame.ui.fragments.MultiplayerFragment;
 import com.example.rocketgame.ui.fragments.MultiplayerHostFragment;
 import com.example.rocketgame.ui.texture.GameView;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,8 +23,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
-GameFragment.OnGameFragmentInteractionListener,
-GameView.OnDieListener, MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener {
+        GameFragment.OnGameFragmentInteractionListener,
+        GameView.OnDieListener,
+        MultiplayerHostFragment.OnMultiplayerHostFragmentIterationListener,
+        JoinMultiplayerFragment.JoinMultiplayerFragmentIterationListener, MultiplayerFragment.OnMultiplayerFragmentIterationListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -85,6 +89,31 @@ GameView.OnDieListener, MultiplayerHostFragment.OnMultiplayerHostFragmentIterati
 
     @Override
     public void setReady() {
+
+    }
+
+    @Override
+    public void goToMainScreen() {
+
+    }
+
+    @Override
+    public void goToEnterGameScreen() {
+        pushFragment(new JoinMultiplayerFragment(), MainMenuFragment.TAG, false);
+    }
+
+    @Override
+    public void createGameAndJoin() {
+
+    }
+
+    @Override
+    public void joinMultiplayerWithManualCode() {
+
+    }
+
+    @Override
+    public void joinMultiplayerWithQRCode() {
 
     }
 }
