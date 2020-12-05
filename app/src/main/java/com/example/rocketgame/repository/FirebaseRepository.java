@@ -1,6 +1,6 @@
 package com.example.rocketgame.repository;
 
-import com.example.rocketgame.RoomIdGenerator;
+import com.example.rocketgame.generators.RoomIdGenerator;
 import com.example.rocketgame.models.MultiPlayerUser;
 import com.example.rocketgame.models.Room;
 import com.example.rocketgame.models.User;
@@ -17,6 +17,7 @@ public class FirebaseRepository {
     private DatabaseReference mUserRef = mDatabase.getReference("users");
     private DatabaseReference mRoomRef = mDatabase.getReference("rooms");
     private static FirebaseRepository instance;
+    private MultiPlayerUser multiPlayerUser = MultiPlayerUser.getInstance();
 
     public static FirebaseRepository getInstance() {
         if (instance == null)
@@ -44,7 +45,16 @@ public class FirebaseRepository {
     }
 
     public void player2ConnectToRoom(String roomId, MultiPlayerUser player2) {
-        mRoomRef.child(roomId).child("player2").setValue(player2);
+        mRoomRef.child(roomId).child(mAuthUser.getUid()).setValue(player2);
+    }
+
+    public void setReady(){
+        multiPlayerUser.setReady();
+        mRoomRef.child(mAuthUser.getUid()).child("isReady").setValue(multiPlayerUser.isReady());
+    }
+
+    public void setDead(){
+        mRoomRef.child(mAuthUser.getUid()).child("isDead").setValue(multiPlayerUser.isDead());
     }
 
 }
