@@ -28,11 +28,22 @@ implements MainMenuFragmentContract.ViewListener {
         GameEngine.GAMESTAGE = GameEngine.gameStages.stageMenu;
         presentListener.setViewListener(this);
         binding.playBtn.setOnClickListener(v -> presentListener.onPlayBtnClicked());
+        binding.classationBtn.setOnClickListener(v -> presentListener.onClassationBtnClicked());
     }
 
     @Override
     public void goToGameScreen(){
         activityListener.startGame();
+    }
+
+    @Override
+    public void goToClassationFragment() {
+        activityListener.showClassation();
+    }
+
+    @Override
+    public void goToShopFragment() {
+
     }
 
     public interface OnFragmentInteractionListener {

@@ -12,6 +12,7 @@ import com.example.rocketgame.App.GameEngine;
 import com.example.rocketgame.R;
 
 import com.example.rocketgame.core.contract.PauseMenuFragmentContract;
+import com.example.rocketgame.ui.fragments.ClassationFragment;
 import com.example.rocketgame.ui.fragments.DeathFragment;
 import com.example.rocketgame.ui.fragments.GameFragment;
 import com.example.rocketgame.ui.fragments.MainMenuFragment;
@@ -24,9 +25,10 @@ import com.google.firebase.database.FirebaseDatabase;
 import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements MainMenuFragment.OnFragmentInteractionListener,
-GameFragment.OnGameFragmentInteractionListener,
-GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
-DeathFragment.OnDeathFragmentInteractionListener{
+        GameFragment.OnGameFragmentInteractionListener,
+        GameView.OnDieListener, PauseMenuFragment.OnPauseMenuFragmentInteractionListener,
+        DeathFragment.OnDeathFragmentInteractionListener,
+        ClassationFragment.OnClassationFragmentInteractionListener {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -79,7 +81,7 @@ DeathFragment.OnDeathFragmentInteractionListener{
 
     @Override
     public void showClassation() {
-
+        pushFragment(new ClassationFragment(), ClassationFragment.TAG, false);
     }
 
     @Override

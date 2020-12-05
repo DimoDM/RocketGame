@@ -1,11 +1,6 @@
 package com.example.rocketgame.App;
 
-import android.annotation.SuppressLint;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Rect;
 import android.os.Build;
 import android.view.MotionEvent;
 import android.view.View;
@@ -22,12 +17,7 @@ import com.example.rocketgame.App.ECS.Components.TransformComponent;
 import com.example.rocketgame.App.ECS.Entity;
 import com.example.rocketgame.App.ECS.Manager;
 import com.example.rocketgame.App.HelpClasses.ColliderManager;
-import com.example.rocketgame.App.HelpClasses.ObservableInteger;
-import com.example.rocketgame.App.UI.TextureManager;
 import com.example.rocketgame.R;
-import com.example.rocketgame.RocketGameApplication;
-import com.example.rocketgame.ui.activities.MainActivity;
-import com.example.rocketgame.ui.texture.GameView;
 
 
 public class GameEngine{

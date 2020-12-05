@@ -3,15 +3,9 @@ package com.example.rocketgame.ui.fragments;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.Observer;
-
 import com.example.rocketgame.App.GameEngine;
-import com.example.rocketgame.App.HelpClasses.ObservableInteger;
-import com.example.rocketgame.App.HelpClasses.OnIntegerChangeListener;
 import com.example.rocketgame.R;
 import com.example.rocketgame.core.contract.GameFragmentContract;
-import com.example.rocketgame.core.contract.MainMenuFragmentContract;
 import com.example.rocketgame.databinding.FragmentSinglePlayerBinding;
 
 import javax.inject.Inject;
