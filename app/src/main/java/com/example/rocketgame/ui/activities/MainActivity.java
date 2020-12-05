@@ -133,7 +133,8 @@ public class MainActivity extends BaseActivity implements MainMenuFragment.OnFra
 
     @Override
     public void goToMainScreen() {
-
+        GameEngine.GAMESTAGE = GameEngine.gameStages.stageFlag;
+        pushFragment(new MainMenuFragment(), MainMenuFragment.TAG, false);
     }
 
     @Override
