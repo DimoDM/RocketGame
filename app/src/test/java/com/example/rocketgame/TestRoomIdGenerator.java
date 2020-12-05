@@ -1,5 +1,7 @@
 package com.example.rocketgame;
 
+import com.example.rocketgame.generators.RoomIdGenerator;
+
 import org.junit.Assert;
 import org.junit.Test;
 
