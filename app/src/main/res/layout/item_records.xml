@@ -19,14 +19,13 @@
         android:textSize="20sp"
         android:textColor="@color/font_color"
         android:fontFamily="@font/pixelmix"
-        android:text="n"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="SmallSp" />
 
     <TextView
         android:id="@+id/txtUsername"
-        android:layout_width="wrap_content"
+        android:layout_width="150sp"
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textColor="@color/font_color"
@@ -34,7 +33,6 @@
         android:layout_marginStart="15dp"
         app:layout_constraintStart_toEndOf="@id/txtPosition"
         app:layout_constraintTop_toTopOf="parent"
-        android:text="Dimo Marinov"
         tools:ignore="SmallSp" />
 
     <TextView
@@ -45,7 +43,6 @@
         android:textSize="20sp"
         android:textColor="@color/font_color"
         android:fontFamily="@font/pixelmix"
-        android:text="record"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         tools:ignore="SmallSp" />

@@ -58,6 +58,8 @@ public class ClassationAdapter extends RecyclerView.Adapter<ClassationAdapter.Vi
 
     private void sortUsers() {
         for (int i = 0; i < users.size(); i++) {
+            if(users.get(i).getHighScore() == 0) users.remove(i);
+            else
             for (int j = i; j < users.size(); j++) {
                 if(users.get(i).getHighScore() < users.get(j).getHighScore()) {
                     User u = users.get(i);
